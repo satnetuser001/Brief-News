@@ -1,5 +1,7 @@
-31.05.23 Made UML database diagram.
-01.06.23 Briefly compiled the technical task.
+31.05.23 Made UML database diagram in Dia.
+
+01.06.23
+Briefly compiled the technical task.
 Create database:
 	CREATE DATABASE brief_news
 	CHARACTER SET utf8
@@ -9,6 +11,18 @@ Create database user:
 	the password is hidden because the development log will be on GitHub.
 Grant privileges to database user:
 	GRANT ALL PRIVILEGES ON brief_news.* TO 'brief_news_user'@'localhost';
+Installed Laravel application:
+	composer create-project --prefer-dist laravel/laravel briefNews
 Initialized git repository:
-	git init
+	git init, git add ., git commit
 further work with Git will not be described, look at the commits
+
+02.06.23
+Added new requirements to the technical task.
+In the UML database diagram in Article table added the "status" field.
+Added Laravel/UI package to the application:
+	composer require laravel/ui
+Running the package:
+	php artisan ui:auth
+deleted in view resources\views\layouts\app.blade.php line:
+	@vite(['resources/sass/app.scss', 'resources/js/app.js'])

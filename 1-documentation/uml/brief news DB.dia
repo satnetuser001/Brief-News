@@ -90,7 +90,7 @@
         <dia:point val="18.0705,0.0632743"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="18.0705,0.0632743;27.8405,13.1633"/>
+        <dia:rectangle val="18.0705,0.0632743;27.8405,13.9633"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -102,7 +102,7 @@
         <dia:real val="9.7699999999999996"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="13.100000000000003"/>
+        <dia:real val="13.900000000000004"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#articles#</dia:string>
@@ -155,6 +155,29 @@
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#reference - users id#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="primary_key">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="nullable">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="unique">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="default_value">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="table_attribute">
+          <dia:attribute name="name">
+            <dia:string>#status#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#tinytext#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#banned?#</dia:string>
           </dia:attribute>
           <dia:attribute name="primary_key">
             <dia:boolean val="false"/>
@@ -1078,15 +1101,15 @@
         <dia:point val="32.2074,2.27878"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="27.7287,0.817766;32.2574,2.32878"/>
+        <dia:rectangle val="27.7287,0.817727;32.2574,2.32878"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="32.2074,2.27878"/>
-        <dia:point val="30.024,2.27878"/>
-        <dia:point val="30.024,1.46327"/>
+        <dia:point val="30.0239,2.27878"/>
+        <dia:point val="30.0239,1.46327"/>
         <dia:point val="27.8405,1.46327"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
