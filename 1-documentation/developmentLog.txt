@@ -24,5 +24,7 @@ Added Laravel/UI package to the application:
 	composer require laravel/ui
 Running the package:
 	php artisan ui:auth
-deleted in view resources\views\layouts\app.blade.php line:
+Deleted in view resources\views\layouts\app.blade.php line:
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+To edit database tables add the doctrine/dbal package to the application:
+	composer require doctrine/dbal
