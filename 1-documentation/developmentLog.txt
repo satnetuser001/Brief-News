@@ -28,3 +28,24 @@ Deleted in view resources\views\layouts\app.blade.php line:
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 To edit database tables add the doctrine/dbal package to the application:
 	composer require doctrine/dbal
+
+05.06.23
+In the UML database diagram in Article table deleted the "status" field. It
+repeats the functionality of "soft delete".
+The preselected third normal form (3nf) of database.
+
+06.06.23
+The database structure conditionally corresponds to 3nf. Rows may be repeated
+in the "sources_links" table because different articles may have the same sources.
+To resolve the inconsistency, you must declare the "link" field unique and make a
+many-to-many relationship in the "articles" and "sources_links" tables. But in my
+humble opinion, it's overhead.
+In UML DB make some changes for "soft delete".
+Created Migrations for tables "articles" and "sources_links":
+	php artisan make:migration create_articles_table
+	php artisan make:migration create_sources_links_table
+Added to migration "users" field: softDeletes (look in code).
+Added to migration "articles" fields: user_id, header, body, policy, economy, science,
+	technologies, sport, other, world, local, softDeletes.
+Added to migration "sources_links" fields: article_id, link, softDeletes.
+In file .env added DB settings: DB_DATABASE, DB_USERNAME, DB_PASSWORD.

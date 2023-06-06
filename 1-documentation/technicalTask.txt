@@ -11,15 +11,15 @@ OS: Ubuntu 22.04.2 LTS
 Programming language: PHP 8.1.2-1
 Web server: Apache/2.4.52
 Backend framework: Laravel 10.13.0
-Backend framework libraries: ...
+Backend framework libraries: UI, doctrine/dbal
 Frontend framework: отсутствует
 
 --База Данных:
 СУБД: MYSQL
 Имя базы данных: brief_news
 Пользователь: brief_news_user
-Пароль: стандартный (не отображен, т.к. т.з. бедет доступно на GitHub)
-Дополнительно: Soft delete для пользователей и статей, создать первого root (admin привилегии) пользователя
+Пароль: стандартный (не отображен, т.к. т.з. будет доступен на GitHub)
+Дополнительно: Soft delete для пользователей, статей и ссылок, создать первого root (admin привилегии) пользователя
 
 
 --Роли пользователей и разграничение прав:
