@@ -49,3 +49,13 @@ Added to migration "articles" fields: user_id, header, body, policy, economy, sc
 	technologies, sport, other, world, local, softDeletes.
 Added to migration "sources_links" fields: article_id, link, softDeletes.
 In file .env added DB settings: DB_DATABASE, DB_USERNAME, DB_PASSWORD.
+
+07.06.23
+Make models for a tables articles and sources_links:
+	php artisan make:model Article
+	php artisan make:model SourceLink
+Because the model 'SourceLink' doesn't follow the naming rules, added a property
+explicitly specifying the DB table.
+Defined the fields available for mass assignment in models Article and SourceLink.
+Added one-to-many relationship methods between models User and Article.
+Added one-to-many relationship methods between models Article and SourceLink.
