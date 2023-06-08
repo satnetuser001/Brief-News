@@ -49,6 +49,10 @@ Added to migration "articles" fields: user_id, header, body, policy, economy, sc
 	technologies, sport, other, world, local, softDeletes.
 Added to migration "sources_links" fields: article_id, link, softDeletes.
 In file .env added DB settings: DB_DATABASE, DB_USERNAME, DB_PASSWORD.
+Applying migrations:
+	php artisan migrate
+Dumped DB in MYSQL:
+	mysqldump -uroot -p brief_news > brief_news.sql
 
 07.06.23
 Make models for a tables articles and sources_links:
@@ -59,3 +63,14 @@ explicitly specifying the DB table.
 Defined the fields available for mass assignment in models Article and SourceLink.
 Added one-to-many relationship methods between models User and Article.
 Added one-to-many relationship methods between models Article and SourceLink.
+
+08.06.23
+Found a mistake: migration of the user table does not match the design UML table.
+In UML DB in the 'user' table changed the type column 'role' and 'status'.
+Added to migration "users" field: surname, nickname, role, status.
+Rollbacking all migrations:
+	php artisan migrate:rollback
+Applying migrations:
+	php artisan migrate
+Dumped DB in MYSQL:
+	mysqldump -uroot -p brief_news > brief_news.sql
