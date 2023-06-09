@@ -74,3 +74,21 @@ Applying migrations:
 	php artisan migrate
 Dumped DB in MYSQL:
 	mysqldump -uroot -p brief_news > brief_news.sql
+
+09.06.23
+Added the fields available for mass assignment in model User: surname, nickname, role, status.
+Adding the root user in DB:
+Сreate a "seed":
+	php artisan make:seeder UserRootSeeder
+Adding to the "seed" the code that creates the user in the database.
+Apply 'seed':
+	php artisan db:seed --class=UserRootSeeder
+Checking the interaction of models with database tables:
+Сreate a "seed":
+	php artisan make:seeder UserArticleLinkSeeder
+Adding to the "seed" the code that creates the writer, article, and link,
+and saves it in the database.
+Apply 'seed':
+	php artisan db:seed --class=UserArticleLinkSeeder
+Dumped DB in MYSQL:
+	mysqldump -uroot -p brief_news > brief_news.sql
