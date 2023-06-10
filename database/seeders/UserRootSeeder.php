@@ -16,7 +16,7 @@ class UserRootSeeder extends Seeder
     {
         User::create(['role' => 'root',
                         'email' => 'root@gmail.com',
-                        'password' => Hash::make('standard'),
+                        'password' => Hash::make('standart'),
         ]);
     }
 }

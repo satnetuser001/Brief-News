@@ -11,13 +11,19 @@ use Illuminate\Support\Str;
 class UserArticleLinkSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * creates the writers, articles, and links, and saves them in the database
      */
     public function run(): void
     {
-        //creates the writer, articles, and links, and saves it in the database
-        for ($i=1; $i <= 3; $i++) { 
-            //writer
+        /*settings*/
+        $writersCount = 10;
+        $articleCount = 10;
+        $delay = 1; //time between article creation (int.sec.)
+        $wordsCount = 500; //in the article
+        $linksCount = 5;
+
+        /*writer*/
+        for ($i=1; $i <= $writersCount; $i++) {            
             $objWriter = User::create([
                 'name' => 'writerName_' . $i,
                 'surname' => 'writerSurname_' . $i,
@@ -25,17 +31,24 @@ class UserArticleLinkSeeder extends Seeder
                 'role' => 'writer',
                 'status' => 'active',
                 'email' => 'writerEmail_' . $i . '@gmail.com',
-                'password' => Hash::make('standard'),
+                'password' => Hash::make('standart'),
             ]);
-            for ($j=1; $j <= 5; $j++) { 
-                //article
-                $rubric = rand(1, 6);
-                $location = rand(1, 2);
+
+            /*article*/
+            for ($j=1; $j <= $articleCount; $j++) {
+                //article settings
+                $rubric = rand(1, 6); //random select rubric
+                $location = rand(1, 2); //random select location (world or local)
+
+                //form body text
+                $body = 'This is the test body of the article, then the random text is displayed: <br> ';
+                for ($w=0; $w < $wordsCount; $w++) { 
+                    $body .= Str::random(rand(5, 10)) . ' ';
+                }
 
                 $objArticle = $objWriter->articles()->create([
                     'header' => "This is test header, $objWriter->name, article N $j",
-                    'body' => 'This is the test body of the article,
-                     then the random text is displayed: <br>' . Str::random(500),
+                    'body' => $body,
                     'policy' => $rubric == 1,
                     'economy' => $rubric == 2,
                     'science' => $rubric == 3,
@@ -46,8 +59,13 @@ class UserArticleLinkSeeder extends Seeder
                     'local' => $location == 2,
                 ]);
 
-                for ($k=1; $k <= 5; $k++) { 
-                    //link
+                //time delay after the creation of each article except the last one
+                if ($i != $writersCount or $j != $articleCount) {
+                    sleep($delay);
+                }
+
+                /*link*/
+                for ($k=1; $k <= $linksCount; $k++) {                    
                     $objArticle->links()->create([
                         'link' => 'This_is_link_N_' . $k . '.com.ua',
                     ]);

@@ -92,3 +92,8 @@ Apply 'seed':
 	php artisan db:seed --class=UserArticleLinkSeeder
 Dumped DB in MYSQL:
 	mysqldump -uroot -p brief_news > brief_news.sql
+
+10.06.23
+Сhanged the method of generating words for the article in UserArticleLinkSeeder.
+Recreated the database.
+Dumped DB in MYSQL.
