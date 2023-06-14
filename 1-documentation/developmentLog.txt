@@ -97,3 +97,10 @@ Dumped DB in MYSQL:
 Сhanged the method of generating words for the article in UserArticleLinkSeeder.
 Recreated the database.
 Dumped DB in MYSQL.
+
+12.06.23 Working with the technical task.
+
+13.06.23 Working with the technical task.
+
+14.06.23 Finished the technical task (at least at this stage of development).
+An error was found in the database structure. Need to add another table.
