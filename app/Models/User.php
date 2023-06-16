@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\RubricsCombination;
 use App\Models\Article;
 
 class User extends Authenticatable
@@ -18,14 +19,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'surname',
-        'nickname',
-        'role',
-        'status',
-        'email',
-        'password',
+    protected $fillable = ['name', 'surname', 'nickname', 'role', 'status', 'rubrics_combination_id', 'email', 'password',
     ];
 
     /**
@@ -49,7 +43,14 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get user articles
+     * Get this user's rubrics combination
+     */
+    public function rubricsCombination(){
+        return $this->belongsTo(RubricsCombination::class);
+    }
+
+    /**
+     * Get this user's articles
      */
     public function articles(){
         return $this->hasMany(Article::class);

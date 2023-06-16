@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Hash;
 class UserRootSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Creates a root user.
      */
     public function run(): void
     {
         User::create(['role' => 'root',
+                        'rubrics_combination_id' => 256,
                         'email' => 'root@gmail.com',
                         'password' => Hash::make('standart'),
         ]);

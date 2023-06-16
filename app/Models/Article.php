@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\SourceLink;
+use App\Models\RubricsCombination;
 
 class Article extends Model
 {
@@ -16,15 +17,21 @@ class Article extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['user_id', 'header', 'body', 'policy', 'economy', 'science',
-                            'technologies', 'sport', 'other', 'world', 'local',
+    protected $fillable = ['user_id', 'rubrics_combination_id', 'header', 'body',
     ];
 
     /**
-     * Get article writer
+     * Get writer this article
      */
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get rubrics combination to this article
+     */
+    public function rubricsCombination(){
+        return $this->belongsTo(RubricsCombination::class);
     }
 
     /**

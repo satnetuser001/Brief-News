@@ -18,5 +18,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        /*calling seed classes*/
+        $this->call([
+            //filling the table 'rubrics_cambinations' with all possible combinations
+            RubricsCombinationSeeder::class,
+
+            //creates a root user
+            UserRootSeeder::class,
+
+            //create test authors, articles, and links
+            UserArticleLinkSeeder::class,
+        ]);
     }
 }

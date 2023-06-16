@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nickname')->default('incognito');
             $table->string('role', 16)->default('reader');
             $table->string('status', 16)->default('active');
+            $table->foreignId('rubrics_combination_id')->constrained();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

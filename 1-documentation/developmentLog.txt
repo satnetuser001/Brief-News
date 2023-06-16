@@ -103,4 +103,20 @@ Dumped DB in MYSQL.
 13.06.23 Working with the technical task.
 
 14.06.23 Finished the technical task (at least at this stage of development).
-An error was found in the database structure. Need to add another table.
+An error was found in the database structure. Combinations of rubrics in the articles table and users table will be repeated. Need to add rubrics_combinations table.
+
+15.06.23
+To fix an error in database structure:
+Created Migrations for table "rubrics_combinations":
+	php artisan make:migration create_rubrics_combinations_table
+Changed migrations according to the UML diagram.
+Make model for a table rubrics_combinations:
+	php artisan make:model RubricsCombination
+Changed Models according to the UML diagram.
+Сreate a RubricsCombination "seed":
+	php artisan make:seeder RubricsCombinationSeeder
+
+16.06.23
+Made the logic of filling the table in RubricsCombinationSeeder.
+Recreated the database.
+Dumped DB in MYSQL.
