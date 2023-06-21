@@ -32,7 +32,7 @@ class UserArticleLinkSeeder extends Seeder
                 'status' => 'active',
                 'rubrics_combination_id' => rand(1, 256),
                 'email' => 'writerEmail_' . $i . '@gmail.com',
-                'password' => Hash::make('standart'),
+                'password' => Hash::make(1077),
             ]);
 
             /*article*/

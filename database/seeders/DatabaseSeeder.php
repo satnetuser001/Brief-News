@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
             //creates a root user
             UserRootSeeder::class,
 
+            //creates an admin user
+            UserAdminSeeder::class,
+
             //create test authors, articles, and links
             UserArticleLinkSeeder::class,
         ]);

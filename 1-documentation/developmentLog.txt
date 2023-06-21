@@ -120,3 +120,15 @@ Changed Models according to the UML diagram.
 Made the logic of filling the table in RubricsCombinationSeeder.
 Recreated the database.
 Dumped DB in MYSQL.
+
+19.06.23
+Сreate basic.blade.php in layouts.
+Сreate home.blade.php in views.
+planned the structure of controllers.
+
+21.06.23
+In view created user interface buttons.
+Selected test password 1077 for all users.
+Created user with admin role (seed).
+Created user with reader role (web interface).
+Tested user interface buttons on all roles (manual testing).

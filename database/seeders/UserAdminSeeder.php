@@ -7,16 +7,16 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserRootSeeder extends Seeder
+class UserAdminSeeder extends Seeder
 {
     /**
-     * Creates a root user.
+     * Creates an admin user.
      */
     public function run(): void
     {
-        User::create(['role' => 'root',
+        User::create(['role' => 'admin',
                         'rubrics_combination_id' => 256,
-                        'email' => 'root@gmail.com',
+                        'email' => 'admin@gmail.com',
                         'password' => Hash::make(1077),
         ]);
     }
