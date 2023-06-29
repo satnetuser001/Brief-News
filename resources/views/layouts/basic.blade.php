@@ -21,10 +21,11 @@
                 Ваши права <b>{{ Auth::user()->role }}</b><br>
             @endauth
 
-            {{-- User interface buttons --}}
             @guest
                 гость<br>
             @endguest
+
+            {{-- User interface buttons --}}
 
             <a href="{{ route('home') }}">Главная</a>
 

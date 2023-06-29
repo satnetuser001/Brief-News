@@ -132,3 +132,23 @@ Selected test password 1077 for all users.
 Created user with admin role (seed).
 Created user with reader role (web interface).
 Tested user interface buttons on all roles (manual testing).
+
+26.06.23
+Work on the rubrics sorting panel:
+Sketched View;
+Skethed Controller.
+
+27.06.23
+Continuation of work on the rubrics sorting panel:
+Continuation of work on the Controller.
+
+28.06.23
+Continuation of work on the rubrics sorting panel:
+Continuation of work on the Controller;
+The development of the logic for pressing the buttons "Panel for sorting articles by headings and locale" has been completed.
+
+29.26.23
+Continuation of work on the rubrics sorting panel:
+Made a 'rubrics combination' in the Сontroller.
+Moved the logic for "Panel for sorting articles by headings and locale" to a trait ConverterRubricsCombination.
+Made buttons for "Panel for sorting articles by headings and locale" in View.

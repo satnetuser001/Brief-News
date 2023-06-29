@@ -16,4 +16,4 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::any('/', [HomeController::class, 'home'])->name('home');
