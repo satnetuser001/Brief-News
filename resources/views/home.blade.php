@@ -4,9 +4,9 @@
 
 @section('content')
     <b>Главная</b><br>
-    Панель сортировки статей по рубрикам и локали<br>
     
-    @if(array_key_exists('rubricsCombination', $context))
+    <!-- Panel for sorting articles by headings and locale -->
+    @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
         <form action="{{ route('home') }}" method="POST" name="returnRubricsCombinations">
             @csrf
 
@@ -52,10 +52,39 @@
         </form>
     @endif
 
-    <?php
-        echo '<pre>';
-        var_dump($context);
-        echo '</pre>'
-    ?>
-    Новости<br>
+    <!-- News -->
+    @if(array_key_exists('articles', $context) and $context['articles'] != NULL)
+        @foreach ($context['articles'] as $article)
+            <!-- article -->
+            <div>
+                <!-- header -->
+                <h3>
+                    {{ $article['header'] }}
+                </h3>
+                <!-- body -->
+                <article>
+                    {{ $article['body'] }}
+                </article>
+                <!-- author -->
+                <address>
+                    {{ $article['user']['nickname'] }}
+                </address>
+                    <!-- links -->
+                    @foreach ($article['links'] as $link)
+                        <div>
+                            <a href="{{ $link['link'] }}">{{ $link['link'] }}</a>
+                        </div>
+                    @endforeach
+            </div>
+        @endforeach
+    @endif
+    
+    <!-- debugging -->
+    @if(array_key_exists('debugging', $context) and $context['debugging'] != NULL)
+        <?php
+            echo '<pre>';
+            var_dump($context);
+            echo '</pre>'
+        ?>
+    @endif
 @endsection

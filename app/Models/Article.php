@@ -13,12 +13,18 @@ class Article extends Model
     use HasFactory;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['user', 'links', 'rubricsCombination'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['user_id', 'rubrics_combination_id', 'header', 'body',
-    ];
+    protected $fillable = ['user_id', 'rubrics_combination_id', 'header', 'body'];
 
     /**
      * Get writer this article

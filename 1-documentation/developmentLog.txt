@@ -147,8 +147,28 @@ Continuation of work on the rubrics sorting panel:
 Continuation of work on the Controller;
 The development of the logic for pressing the buttons "Panel for sorting articles by headings and locale" has been completed.
 
-29.26.23
+29.06.23
 Continuation of work on the rubrics sorting panel:
 Made a 'rubrics combination' in the Сontroller.
 Moved the logic for "Panel for sorting articles by headings and locale" to a trait ConverterRubricsCombination.
 Made buttons for "Panel for sorting articles by headings and locale" in View.
+
+30.06.23
+Began making the "news" section in the controller.
+
+03.07.23
+Make "Eager Loading By Default" in the Article model.
+
+04.07.23
+Made the "news" section in the Home view.
+Continue to make the "news" section in the Home controller.
+
+05.07.23
+Started making controller logic for building a query to the database for fetching articles.
+
+06.07.23
+Continued making controller logic for building a query to the database for fetching articles.
+
+07.07.23
+Сompleted controller logic for building a query to the database for fetching articles.
+Some Controller code refactoring.

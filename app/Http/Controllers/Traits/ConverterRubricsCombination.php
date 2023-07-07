@@ -110,17 +110,14 @@ trait ConverterRubricsCombination{
         ) {
             $convertedRubricsCombination['local'] = 1;
         }
-        if (
+        elseif (
             $convertedRubricsCombination['world'] == 0 and
             $convertedRubricsCombination['local'] == 0 and
             array_key_exists('pressed', $rubricsCombination) and
             $rubricsCombination['pressed'] == 'local'
         ) {
             $convertedRubricsCombination['world'] = 1;
-        }
-
-        
-        
+        } 
 
         //all buttons enable
         if (
