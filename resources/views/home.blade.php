@@ -7,7 +7,7 @@
     
     <!-- Panel for sorting articles by headings and locale -->
     @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
-        <form action="{{ route('home') }}" method="POST" name="returnRubricsCombinations">
+        <form id="data" action="{{ route('home') }}" method="POST" name="returnRubricsCombinations">
             @csrf
 
             <!-- previous state of rubric combinations -->
@@ -55,28 +55,31 @@
     <!-- News -->
     @if(array_key_exists('articles', $context) and $context['articles'] != NULL)
         @foreach ($context['articles'] as $article)
-            <!-- article -->
-            <div>
-                <!-- header -->
-                <h3>
-                    {{ $article['header'] }}
-                </h3>
-                <!-- body -->
+            <details>
+                <summary>
+                    <b>{{ $article->header }}</b>
+                </summary>
+
                 <article>
-                    {{ $article['body'] }}
+                    {{ $article->body }}
                 </article>
                 <!-- author -->
                 <address>
-                    {{ $article['user']['nickname'] }}
+                    {{ $article->user->nickname }}
                 </address>
-                    <!-- links -->
-                    @foreach ($article['links'] as $link)
-                        <div>
-                            <a href="{{ $link['link'] }}">{{ $link['link'] }}</a>
-                        </div>
-                    @endforeach
-            </div>
+                <!-- links -->
+                @foreach ($article->links as $link)
+                    <div>
+                        <a href="{{ $link->link }}">{{ $link->link }}</a>
+                    </div>
+                @endforeach
+            </details>
         @endforeach
+
+        <!-- paginator -->
+<!-- need to add "if" to check if paginator exists -->
+        <div>{{ $context['articles']->links() }}</div>
+
     @endif
     
     <!-- debugging -->

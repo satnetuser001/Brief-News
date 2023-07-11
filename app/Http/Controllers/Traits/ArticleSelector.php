@@ -20,9 +20,9 @@ trait ArticleSelector{
      * `created_at` desc
      *
      * @param array
-     * @return array
+     * @return object
      */
-    protected function articleSelector(array $rubricsCombination):array
+    protected function articleSelector(array $rubricsCombination)
     {
         return Article::latest()->
                         //WHERE (policy = 1 OR economy = 1)
@@ -76,9 +76,7 @@ trait ArticleSelector{
                                     $query->where('world', 1)->orWhere('local', 1);
                                 }
                             }
-                        )->
-                        get()->
-                        toArray();
+                        );
     }
 }
 ?>

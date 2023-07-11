@@ -172,3 +172,17 @@ Continued making controller logic for building a query to the database for fetch
 07.07.23
 Сompleted controller logic for building a query to the database for fetching articles.
 Some Controller code refactoring.
+
+10.07.23
+In view hid the body of the article with a tag <details>, later will be finalized according to the requirements of the technical task.
+Pagination:
+Retrieving pagination views so they can be modified:
+	php artisan vendor:publish --tag=laravel-pagination
+Change arrow size <Previous Next> in file resources/views/vendor/pagination/tailwind.blade.php
+A problem was detected: the standard paginator didn't work with the "Panel for sorting articles by headings and locale".
+
+11.07.23
+Finding a solution to a problem discovered earlier.
+Found a solution:
+	https://laravel.com/docs/10.x/pagination#appending-query-string-values
+Summary: added paginator to Home view and Home controller
