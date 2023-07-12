@@ -186,3 +186,12 @@ Finding a solution to a problem discovered earlier.
 Found a solution:
 	https://laravel.com/docs/10.x/pagination#appending-query-string-values
 Summary: added paginator to Home view and Home controller
+
+12.07.23
+Article CRUD:
+Create a resource controller that will implement CRUD logic for articles:
+	php artisan make:controller ArticleController --resource
+Created a route for resource Controller:
+	Route::resource('articles', ArticleController::class)
+Written logic in index method in ArticleController for a display of the 'My Articles' page.
+For 'My Articles' view reused the 'Home' view, so made some changes in the view.

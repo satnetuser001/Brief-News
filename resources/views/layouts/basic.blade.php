@@ -32,7 +32,7 @@
             @auth
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin' or Auth::user()->role == 'writer')
                     <a href="#">Создать статью</a>
-                    <a href="#">Мои статьи</a>
+                    <a href="{{ route('articles.index') }}">Мои статьи</a>
                 @endif
 
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin')

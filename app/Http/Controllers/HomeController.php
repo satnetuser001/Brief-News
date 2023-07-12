@@ -9,42 +9,36 @@ use App\Models\Article;
 use App\Http\Controllers\Traits\ConverterRubricsCombination;
 use App\Http\Controllers\Traits\ArticleSelector;
 
+/**
+ * This controller is responsible for pages:
+ * Home
+ */
 class HomeController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for pages:
-    | Home
-    |
-    */
-
     use ConverterRubricsCombination, ArticleSelector;
 
     /**
      * Controller settings
      */
-    protected $articlesPerPage = 10;
+    protected $articlesPerPage = 15;
     protected $debuggingStatus = false;
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth')->except('home');
     }
 
     /**
      * Show Home page
-     *
      */
     public function home(Request $request)
     {
         $context = [
+            'route' => 'home',
             'rubricsCombination' => [],
             'articles' => [],
             'debugging' => [],
-        ];        
+        ];
 
         //repeated request auth or guest
         if ($request->input() != NULL) {
@@ -59,7 +53,8 @@ class HomeController extends Controller
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             } else {
-                $objsArticles = $this->articleSelector($arrRubricsCombination)->
+                $objsArticles = Article::latest();
+                $objsArticles = $this->articleSelector($objsArticles, $arrRubricsCombination)->
                                         paginate($this->articlesPerPage)->
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
@@ -67,7 +62,7 @@ class HomeController extends Controller
             
             //debugging
             if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'guest repeated request'];
+                $context['debugging'] += ['in if' => 'home, repeated request'];
                 $context['debugging'] += ['pressed' => $request->input()['pressed']];
             }
         }
@@ -86,7 +81,8 @@ class HomeController extends Controller
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             } else {
-                $objsArticles = $this->articleSelector($arrRubricsCombination)->
+                $objsArticles = Article::latest();
+                $objsArticles = $this->articleSelector($objsArticles, $arrRubricsCombination)->
                                         paginate($this->articlesPerPage)->
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
@@ -94,7 +90,7 @@ class HomeController extends Controller
 
             //debugging
             if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'auth first request'];
+                $context['debugging'] += ['in if' => 'home, auth first request'];
             }
         }
 
@@ -114,7 +110,7 @@ class HomeController extends Controller
 
             //debugging
             if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'guest first request'];
+                $context['debugging'] += ['in if' => 'home, guest first request'];
             }
         }    
 

@@ -22,61 +22,62 @@ trait ArticleSelector{
      * @param array
      * @return object
      */
-    protected function articleSelector(array $rubricsCombination)
+    protected function articleSelector($objsArticles, array $rubricsCombination)
     {
-        return Article::latest()->
-                        //WHERE (policy = 1 OR economy = 1)
-                        whereHas(
-                            'rubricsCombination',
-                            function($query) use ($rubricsCombination) {
-                                $firstRubricWhere = 0;
-                                foreach ($rubricsCombination as $rubric => $value) {
-                                    if (
-                                        $firstRubricWhere == 0 and
-                                        $rubric != 'all' and
-                                        $rubric != 'world' and
-                                        $rubric != 'local' and
-                                        $value == 1
-                                    ) {
-                                        $firstRubricWhere = 1;
-                                        $query->where($rubric, 1);
-                                    }
-                                    elseif (
-                                        $firstRubricWhere == 1 and
-                                        $rubric != 'all' and
-                                        $rubric != 'world' and
-                                        $rubric != 'local' and
-                                        $value == 1
-                                    ) {
-                                        $query->orWhere($rubric, 1);
-                                    }
-                                }
-                            }
-                        )->
-                        //AND (world = 1 OR local = 1)
-                        whereHas(
-                            'rubricsCombination',
-                            function($query) use ($rubricsCombination){
+        return $objsArticles->
+                    //WHERE (policy = 1 OR economy = 1)
+                    whereHas(
+                        'rubricsCombination',
+                        function($query) use ($rubricsCombination) {
+                            $firstRubricWhere = 0;
+                            foreach ($rubricsCombination as $rubric => $value) {
                                 if (
-                                    $rubricsCombination['world'] == 1 and
-                                    $rubricsCombination['local'] == 0
+                                    $firstRubricWhere == 0 and
+                                    $rubric != 'all' and
+                                    $rubric != 'world' and
+                                    $rubric != 'local' and
+                                    $value == 1
                                 ) {
-                                    $query->where('world', 1);
+                                    $firstRubricWhere = 1;
+                                    $query->where($rubric, 1);
                                 }
                                 elseif (
-                                    $rubricsCombination['world'] == 0 and
-                                    $rubricsCombination['local'] == 1
+                                    $firstRubricWhere == 1 and
+                                    $rubric != 'all' and
+                                    $rubric != 'world' and
+                                    $rubric != 'local' and
+                                    $value == 1
                                 ) {
-                                    $query->where('local', 1);
-                                }
-                                elseif (
-                                    $rubricsCombination['world'] == 1 and
-                                    $rubricsCombination['local'] == 1
-                                ) {
-                                    $query->where('world', 1)->orWhere('local', 1);
+                                    $query->orWhere($rubric, 1);
                                 }
                             }
-                        );
+                        }
+                    )->
+                    //AND (world = 1 OR local = 1)
+                    whereHas(
+                        'rubricsCombination',
+                        function($query) use ($rubricsCombination){
+                            if (
+                                $rubricsCombination['world'] == 1 and
+                                $rubricsCombination['local'] == 0
+                            ) {
+                                $query->where('world', 1);
+                            }
+                            elseif (
+                                $rubricsCombination['world'] == 0 and
+                                $rubricsCombination['local'] == 1
+                            ) {
+                                $query->where('local', 1);
+                            }
+                            elseif (
+                                $rubricsCombination['world'] == 1 and
+                                $rubricsCombination['local'] == 1
+                            ) {
+                                $query->where('world', 1)->orWhere('local', 1);
+                            }
+                        }
+                    )
+                ;
     }
 }
 ?>

@@ -1,13 +1,22 @@
 @extends('layouts.basic')
 
-@section('title', 'Главная')
+@if($context['route'] == 'home')
+    @section('title', 'Главная')
+@else
+    @section('title', 'Мои статьи')
+@endif
 
 @section('content')
-    <b>Главная</b><br>
+    @if($context['route'] == 'home')
+        <b>Главная</b><br>
+    @else
+        <b>Мои статьи</b><br>
+    @endif
     
     <!-- Panel for sorting articles by headings and locale -->
     @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
-        <form id="data" action="{{ route('home') }}" method="POST" name="returnRubricsCombinations">
+            <form action="{{ route($context['route']) }}" method="GET" name="returnRubricsCombinations">
+
             @csrf
 
             <!-- previous state of rubric combinations -->
