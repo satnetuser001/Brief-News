@@ -30,7 +30,7 @@ trait ConverterRubricsCombination{
         }
 
         //user selected one rubric instead of all
-        if (
+        elseif (
             array_key_exists('pressed', $rubricsCombination) and
             $rubricsCombination['pressed'] != 'world' and
             $rubricsCombination['pressed'] != 'local' and
@@ -44,7 +44,7 @@ trait ConverterRubricsCombination{
         }
 
         //user selected one locale instead of all
-        if (
+        elseif (
             array_key_exists('pressed', $rubricsCombination) and
             $rubricsCombination['all'] == 1 and
             (
@@ -86,6 +86,20 @@ trait ConverterRubricsCombination{
         }            
 
         //conversion
+        //disable the default 'all' if something enabled
+        if (
+            $convertedRubricsCombination['policy'] == 1 or
+            $convertedRubricsCombination['economy'] == 1 or
+            $convertedRubricsCombination['science'] == 1 or
+            $convertedRubricsCombination['technologies'] == 1 or
+            $convertedRubricsCombination['sport'] == 1 or
+            $convertedRubricsCombination['other'] == 1 or
+            $convertedRubricsCombination['world'] == 1 or
+            $convertedRubricsCombination['local'] == 1
+        ) {
+            $convertedRubricsCombination['all'] = 0;
+        }
+
         //all rubric buttons disabled
         if (
             $convertedRubricsCombination['all'] == 0 and
@@ -101,26 +115,8 @@ trait ConverterRubricsCombination{
             $convertedRubricsCombination['local'] = 0;
         }
 
-        //last locale buttons disabled
-        if (
-            $convertedRubricsCombination['world'] == 0 and
-            $convertedRubricsCombination['local'] == 0 and
-            array_key_exists('pressed', $rubricsCombination) and
-            $rubricsCombination['pressed'] == 'world'
-        ) {
-            $convertedRubricsCombination['local'] = 1;
-        }
-        elseif (
-            $convertedRubricsCombination['world'] == 0 and
-            $convertedRubricsCombination['local'] == 0 and
-            array_key_exists('pressed', $rubricsCombination) and
-            $rubricsCombination['pressed'] == 'local'
-        ) {
-            $convertedRubricsCombination['world'] = 1;
-        } 
-
         //all buttons enable
-        if (
+        elseif (
             $convertedRubricsCombination['policy'] == 1 and
             $convertedRubricsCombination['economy'] == 1 and
             $convertedRubricsCombination['science'] == 1 and
@@ -139,6 +135,24 @@ trait ConverterRubricsCombination{
             $convertedRubricsCombination['other'] = 0;
             $convertedRubricsCombination['world'] = 0;
             $convertedRubricsCombination['local'] = 0;
+        }
+
+        //last locale buttons disabled (two options)
+        elseif (
+            $convertedRubricsCombination['world'] == 0 and
+            $convertedRubricsCombination['local'] == 0 and
+            array_key_exists('pressed', $rubricsCombination) and
+            $rubricsCombination['pressed'] == 'world'
+        ) {
+            $convertedRubricsCombination['local'] = 1;
+        }
+        elseif (
+            $convertedRubricsCombination['world'] == 0 and
+            $convertedRubricsCombination['local'] == 0 and
+            array_key_exists('pressed', $rubricsCombination) and
+            $rubricsCombination['pressed'] == 'local'
+        ) {
+            $convertedRubricsCombination['world'] = 1;
         }
 
         return $convertedRubricsCombination;

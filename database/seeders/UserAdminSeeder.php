@@ -16,7 +16,7 @@ class UserAdminSeeder extends Seeder
     {
         User::create(['role' => 'admin',
                         'rubrics_combination_id' => 256,
-                        'email' => 'admin@gmail.com',
+                        'email' => 'admin_1@gmail.com',
                         'password' => Hash::make(1077),
         ]);
     }

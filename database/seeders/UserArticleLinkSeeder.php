@@ -31,7 +31,7 @@ class UserArticleLinkSeeder extends Seeder
                 'role' => 'writer',
                 'status' => 'active',
                 'rubrics_combination_id' => rand(1, 256),
-                'email' => 'writerEmail_' . $i . '@gmail.com',
+                'email' => 'writer_' . $i . '@gmail.com',
                 'password' => Hash::make(1077),
             ]);
 

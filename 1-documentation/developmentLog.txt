@@ -195,3 +195,7 @@ Created a route for resource Controller:
 	Route::resource('articles', ArticleController::class)
 Written logic in index method in ArticleController for a display of the 'My Articles' page.
 For 'My Articles' view reused the 'Home' view, so made some changes in the view.
+
+13.07.23
+fixed a bug in trait ConverterRubricsCombination:
+when authenticating a user (and loading a rubrics combination), the 'all' button was always enabled.
