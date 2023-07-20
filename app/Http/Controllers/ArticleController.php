@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RubricsCombination;
-//use App\Models\Article;
 use App\Http\Controllers\Traits\ConverterRubricsCombination;
 use App\Http\Controllers\Traits\ArticleSelector;
+use App\Http\Controllers\Traits\IdRubricsCombination;
 
 /**
  * This controller is responsible for pages:
@@ -15,13 +15,33 @@ use App\Http\Controllers\Traits\ArticleSelector;
  */
 class ArticleController extends Controller
 {
-    use ConverterRubricsCombination, ArticleSelector;
+    use ConverterRubricsCombination, ArticleSelector, IdRubricsCombination;
 
     /**
      * Controller settings
      */
     protected $articlesPerPage = 15;
     protected $debuggingStatus = false;
+
+    /**
+     * Validation rules and messages
+     * now this is an example
+     */
+
+    private const VALIDATOR_RULS = ['arrRubricsCombination' => "required_without_all:arrRubricsCombination.*",
+                                    'arrLocaleCombination' => "required_without_all:arrLocaleCombination.*",
+                                    'header' => 'required|max:65535',
+                                    'body' => 'required|max:16777215',
+                                    //links are not validated,
+                                    ];
+
+    private const VALIDATOR_MESSAGES = ['arrRubricsCombination' => 'Выберете хотябы одну рубрику',
+                                        'arrLocaleCombination' => 'Выберете хотябы одну локаль',
+                                        'header.required' => 'Заголовок не должно быть пустым',
+                                        'header.max' => 'Заголовок не должен содержать больше 65 535 символов',
+                                        'body.required' => 'Статья не должна быть пустой',
+                                        'body.max' => 'Статья не должен содержать больше 16 777 215 символов',
+                                        ];
 
     public function __construct()
     {
@@ -43,6 +63,7 @@ class ArticleController extends Controller
 
         //repeated request
         if ($request->input() != NULL) {
+            
             //Rubrics and locale panel
             $arrRubricsCombination = $this->converterRubricsCombination($request->input());
             $context['rubricsCombination'] = $arrRubricsCombination;
@@ -51,12 +72,14 @@ class ArticleController extends Controller
             if ($arrRubricsCombination['all'] == 1) {
                 $objsArticles = Auth::user()->
                                     articles()->
+                                    latest()->
                                     paginate($this->articlesPerPage)->
                                     appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             } else {
                 $objsArticles = Auth::user()->articles();
                 $objsArticles = $this->articleSelector($objsArticles, $arrRubricsCombination)->
+                                        latest()->
                                         paginate($this->articlesPerPage)->
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
@@ -81,6 +104,7 @@ class ArticleController extends Controller
             //news
             $objsArticles = Auth::user()->
                                 articles()->
+                                latest()->
                                 paginate($this->articlesPerPage)->
                                 appends($arrRubricsCombination);
             $context['articles'] = $objsArticles;
@@ -98,7 +122,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return response('create');
+        return view('articles.create');
     }
 
     /**
@@ -106,7 +130,35 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return response('store');
+        //article validation
+        $validated = $request->validate(self::VALIDATOR_RULS, self::VALIDATOR_MESSAGES);
+        
+        //define article rubrics combination id
+        $idRubricsCombination = $this->idRubricsCombination(
+                                            $validated['arrRubricsCombination'],
+                                            $validated['arrLocaleCombination'],
+                                );
+        
+        //save article
+        $objArticle = Auth::user()->
+                            articles()->
+                            create(['rubrics_combination_id' => $idRubricsCombination,
+                                    'header' => $validated['header'],
+                                    'body' => $validated['body'],
+                                    ]);
+
+        //save article links
+        if ($request->has('links')) {
+            foreach ($request['links'] as $value) {
+                if ($value != NULL) {
+                    $objArticle->links()->create(['link' => $value]);
+                }
+            }
+        }
+        
+        return redirect()->route('articles.index');
+
+        //return view('test', ['context' => $idRubricsCombination]);
     }
 
     /**

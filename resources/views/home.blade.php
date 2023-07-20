@@ -7,17 +7,17 @@
 @endif
 
 @section('content')
-    @if($context['route'] == 'home')
-        <b>Главная</b><br>
-    @else
-        <b>Мои статьи</b><br>
-    @endif
-    
-    <!-- Panel for sorting articles by headings and locale -->
-    @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
-            <form action="{{ route($context['route']) }}" method="GET" name="returnRubricsCombinations">
+    <b>
+        @if($context['route'] == 'home')
+            Главная
+        @else
+            Мои статьи
+        @endif
+    </b><br>
 
-            @csrf
+    <!-- Panel for sorting articles by rubrics and locale -->
+    @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
+        <form action="{{ route($context['route']) }}" method="GET" name="returnRubricsCombinations">
 
             <!-- previous state of rubric combinations -->
             <input type="hidden" name="all" value="{{ $context['rubricsCombination']['all'] }}">
@@ -83,6 +83,11 @@
                     </div>
                 @endforeach
             </details>
+            @if(Auth::check() and Auth::user()->id == $article->user_id)
+                <div>
+                    Это Ваша статья
+                </div>
+            @endif
         @endforeach
 
         <!-- paginator -->

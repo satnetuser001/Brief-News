@@ -197,5 +197,26 @@ Written logic in index method in ArticleController for a display of the 'My Arti
 For 'My Articles' view reused the 'Home' view, so made some changes in the view.
 
 13.07.23
-fixed a bug in trait ConverterRubricsCombination:
+Fixed a bug in trait ConverterRubricsCombination:
 when authenticating a user (and loading a rubrics combination), the 'all' button was always enabled.
+
+14.07.23
+Create article:
+In ArticleController added logic in the 'create' method to show a create article page.
+Make create.blade.php view. Because there will be an indefinite number of "sources links", it is necessary to apply on the page JavaScript to form 'inputs'
+Working with JavaScript.
+
+17.07.23
+Working with JavaScript.
+In create.blade.php view maked form with rubrics combinations.
+
+18.07.23
+Made the some logic in the store method.
+Made a validation for input data.
+
+19.07.23
+Сhanged the logic of the IdRubricsCombination.php trait for the tasks of the store method.
+
+20.07.23
+Final сhanges of create.blade.php, store method and IdRubricsCombination trait.
+Create article is done.

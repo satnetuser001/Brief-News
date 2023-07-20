@@ -14,7 +14,7 @@
         <section>
             {{-- some user data --}}
             @auth
-                @if (Auth::user()->name)
+                @if (Auth::check() and Auth::user()->name)
                     Ваше имя <b>{{ Auth::user()->name }}</b><br>
                 @endif   
 
@@ -31,7 +31,7 @@
 
             @auth
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin' or Auth::user()->role == 'writer')
-                    <a href="#">Создать статью</a>
+                    <a href="{{ route('articles.create') }}">Создать статью</a>
                     <a href="{{ route('articles.index') }}">Мои статьи</a>
                 @endif
 
