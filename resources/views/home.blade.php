@@ -7,13 +7,15 @@
 @endif
 
 @section('content')
-    <b>
-        @if($context['route'] == 'home')
-            Главная
-        @else
-            Мои статьи
-        @endif
-    </b><br>
+    <div>
+        <b>
+            @if($context['route'] == 'home')
+                Главная
+            @else
+                Мои статьи
+            @endif
+        </b>
+    </div>
 
     <!-- Panel for sorting articles by rubrics and locale -->
     @if(array_key_exists('rubricsCombination', $context) and $context['rubricsCombination'] != NULL)
@@ -77,15 +79,15 @@
                     {{ $article->user->nickname }}
                 </address>
                 <!-- links -->
-                @foreach ($article->links as $link)
+                @foreach ($article->links as $objLink)
                     <div>
-                        <a href="{{ $link->link }}">{{ $link->link }}</a>
+                        <a href="{{ $objLink->link }}">{{ $objLink->link }}</a>
                     </div>
                 @endforeach
             </details>
             @if(Auth::check() and Auth::user()->id == $article->user_id)
                 <div>
-                    Это Ваша статья
+                    <a href="{{ route('articles.edit', [$article->id]) }}">Редактировать</a>
                 </div>
             @endif
         @endforeach

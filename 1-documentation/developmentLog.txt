@@ -220,3 +220,14 @@ Made a validation for input data.
 20.07.23
 Final сhanges of create.blade.php, store method and IdRubricsCombination trait.
 Create article is done.
+
+21.07.23
+Edit article:
+Added "edit" button on a Home Page.
+Create edit.blade.php.
+In ArticleController in edit() method added logic to show edit article page.
+In ArticleController in update() method added logic to save edited article in DB.
+
+Due to poor knowledge of JavaScript, making a CRUD for links in the view was impossible.
+Also, the functionality of the resource controller is insufficient.
+It will be necessary to make changes to the written part of the project.

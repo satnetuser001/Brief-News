@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RubricsCombination;
+use App\Models\Article;
 use App\Http\Controllers\Traits\ConverterRubricsCombination;
 use App\Http\Controllers\Traits\ArticleSelector;
 use App\Http\Controllers\Traits\IdRubricsCombination;
@@ -157,8 +158,6 @@ class ArticleController extends Controller
         }
         
         return redirect()->route('articles.index');
-
-        //return view('test', ['context' => $idRubricsCombination]);
     }
 
     /**
@@ -172,17 +171,42 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        return response('edit');
+    public function edit(Article $article)
+    {   
+        return view('articles.edit', ['context' => $article]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Article $article)
     {
-        return response('update');
+        //edited data validation
+        $validated = $request->validate(self::VALIDATOR_RULS, self::VALIDATOR_MESSAGES);
+        
+        //define edited article rubrics combination id
+        $idRubricsCombination = $this->idRubricsCombination(
+                                            $validated['arrRubricsCombination'],
+                                            $validated['arrLocaleCombination'],
+                                );
+
+        //save edited article
+        $article->fill(['rubrics_combination_id' => $idRubricsCombination,
+                        'header' => $validated['header'],
+                        'body' => $validated['body'],
+                        ]);
+        $article->save();
+
+        //save added article links
+        if ($request->has('links')) {
+            foreach ($request['links'] as $value) {
+                if ($value != NULL) {
+                    $article->links()->create(['link' => $value]);
+                }
+            }
+        }
+
+        return redirect()->route('articles.index');
     }
 
     /**
