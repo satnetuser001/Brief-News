@@ -231,3 +231,6 @@ In ArticleController in update() method added logic to save edited article in DB
 Due to poor knowledge of JavaScript, making a CRUD for links in the view was impossible.
 Also, the functionality of the resource controller is insufficient.
 It will be necessary to make changes to the written part of the project.
+
+24.07.23
+Converting the Article resource route to regular routes and changing the name index to myArticles in controller and route.

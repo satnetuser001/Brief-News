@@ -16,7 +16,7 @@ use App\Http\Controllers\Traits\IdRubricsCombination;
  */
 class ArticleController extends Controller
 {
-    use ConverterRubricsCombination, ArticleSelector, IdRubricsCombination;
+    use ArticleSelector, ConverterRubricsCombination, IdRubricsCombination;
 
     /**
      * Controller settings
@@ -52,11 +52,13 @@ class ArticleController extends Controller
     /**
      * Show all articles of the user
      */
-    public function index(Request $request)
+    public function userArticles(Request $request)
     {
         
         $context = [
-            'route' => 'articles.index',
+            /*because home.blade.php is used in Home and MyArticle Pages,
+            sent out 'route' setting for links*/
+            'route' => 'articles.userArticles',
             'rubricsCombination' => [],
             'articles' => [],
             'debugging' => [],
@@ -157,7 +159,7 @@ class ArticleController extends Controller
             }
         }
         
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.userArticles');
     }
 
     /**
@@ -206,7 +208,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.userArticles');
     }
 
     /**

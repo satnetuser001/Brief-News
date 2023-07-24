@@ -17,5 +17,12 @@ use App\Http\Controllers\ArticleController;
 
 Auth::routes();
 
-Route::any('/', [HomeController::class, 'home'])->name('home');
-Route::resource('articles', ArticleController::class);
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
+Route::get('/userArticles', [ArticleController::class, 'userArticles'])->name('articles.userArticles');
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::get('articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+Route::patch('articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
+Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
