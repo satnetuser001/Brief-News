@@ -234,3 +234,4 @@ It will be necessary to make changes to the written part of the project.
 
 24.07.23
 Converting the Article resource route to regular routes and changing the name index to myArticles in controller and route.
+Added removal of links when editing an article: view, controller.

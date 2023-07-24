@@ -81,16 +81,22 @@
 		<div>
 			<label>Ссылки на источники</label>
 			@foreach($context['links'] as $objLink)
-				<div>
-					<a href="{{ $objLink->link }}">{{ $objLink->link }}</a>
-					<a href="#">удалить</a>
-				</div>
+				<table>
+					<tr>
+						<td><a href="{{ $objLink->link }}">{{ $objLink->link }}</a></td>
+						<td><input type="checkbox" name="arrDeletedLinks[{{ $objLink->id }}]" value="1"
+								@if(old('arrDeletedLinks') and array_key_exists($objLink['id'], old('arrDeletedLinks')))
+									checked
+								@endif
+							>удалить ссылку</td>
+					</tr>
+				</table>
 			@endforeach
 		</div>
 
 		<div>
 			<div name='links' id='links'></div>
-			<input type='button' value='Добавить ссылку на источник' onclick="addLinkInput()">
+			<input type='button' value='Добавить новую ссылку на источник' onclick="addLinkInput()">
 		</div>
 			{{--
 			@error('links.*')

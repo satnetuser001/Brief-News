@@ -15,5 +15,11 @@
     @endphp
 </pre>
 
+@if(old())
+	@php
+        var_dump(old());
+    @endphp
+@endif
+
 </body>
 </html>

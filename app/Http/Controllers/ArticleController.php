@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RubricsCombination;
 use App\Models\Article;
+use App\Models\SourceLink;
 use App\Http\Controllers\Traits\ConverterRubricsCombination;
 use App\Http\Controllers\Traits\ArticleSelector;
 use App\Http\Controllers\Traits\IdRubricsCombination;
@@ -163,14 +164,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        return response('show');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Article $article)
@@ -182,7 +175,7 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Article $article)
-    {
+    {   
         //edited data validation
         $validated = $request->validate(self::VALIDATOR_RULS, self::VALIDATOR_MESSAGES);
         
@@ -208,11 +201,27 @@ class ArticleController extends Controller
             }
         }
 
+        //delete selected article links
+        if ($request->has('arrDeletedLinks')) {
+            foreach ($request['arrDeletedLinks'] as $id => $value) {
+                SourceLink::find($id)->delete();
+            }
+        }
+
         return redirect()->route('articles.userArticles');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete link to the source from DB.
+     */
+    public function deleteSourceLink(SourceLink $sourceLink)
+    {
+        $sourceLink->delete();
+        return redirect()->route('articles.edit', [$sourceLink->article->id]);
+    }
+
+    /**
+     * Soft delete Article from DB.
      */
     public function destroy(string $id)
     {
