@@ -27,9 +27,7 @@ class ArticleController extends Controller
 
     /**
      * Validation rules and messages
-     * now this is an example
      */
-
     private const VALIDATOR_RULS = ['arrRubricsCombination' => "required_without_all:arrRubricsCombination.*",
                                     'arrLocaleCombination' => "required_without_all:arrLocaleCombination.*",
                                     'header' => 'required|max:65535',
@@ -48,6 +46,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin')->only(['destroyConfirm', 'destroy']);
     }
 
     /**
@@ -122,7 +121,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating an article.
      */
     public function create()
     {
@@ -130,7 +129,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly article and links in DB.
      */
     public function store(Request $request)
     {
@@ -164,7 +163,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the article.
      */
     public function edit(Article $article)
     {   
@@ -172,7 +171,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the article and links in DB.
      */
     public function update(Request $request, Article $article)
     {   
@@ -212,19 +211,19 @@ class ArticleController extends Controller
     }
 
     /**
-     * Soft delete link to the source from DB.
+     * Soft delete Article in DB.
      */
-    public function deleteSourceLink(SourceLink $sourceLink)
+    public function destroyConfirm(Article $article)
     {
-        $sourceLink->delete();
-        return redirect()->route('articles.edit', [$sourceLink->article->id]);
+        return view('articles.destroy', ['context' => $article]);
     }
 
     /**
-     * Soft delete Article from DB.
+     * Soft delete Article in DB.
      */
-    public function destroy(string $id)
+    public function destroy(Article $article)
     {
-        return response('destroy');
+        $article->delete();
+        return redirect()->route('home');
     }
 }

@@ -85,9 +85,27 @@
                     </div>
                 @endforeach
             </details>
-            @if(Auth::check() and Auth::user()->id == $article->user_id)
+            @if(
+                Auth::check() and 
+                (
+                    Auth::user()->id == $article->user_id or
+                    Auth::user()->role == "root" or
+                    Auth::user()->role == "admin"
+                )
+            )
                 <div>
                     <a href="{{ route('articles.edit', [$article->id]) }}">Редактировать</a>
+                </div>
+            @endif
+            @if(
+                Auth::check() and 
+                (
+                    Auth::user()->role == "root" or
+                    Auth::user()->role == "admin"
+                )
+            )
+                <div>
+                     <a href="{{ route('articles.destroyConfirm', [$article->id]) }}">Удалить</a>
                 </div>
             @endif
         @endforeach

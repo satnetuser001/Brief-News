@@ -234,4 +234,17 @@ It will be necessary to make changes to the written part of the project.
 
 24.07.23
 Converting the Article resource route to regular routes and changing the name index to myArticles in controller and route.
+Added Soft Delete in SourceLink model.
 Added removal of links when editing an article: view, controller.
+
+25.07.23
+Delete article:
+According to technical tasks, only an admin can delete an article. Created middleware:
+	php artisan make:middleware IsAdmin
+Register custom middleware in the app/Http/Kernel.php file.
+In ArticleController in construct apply middleware IsAdmin only to destroyConfirm and destroy method.
+Added logic to middleware IsAdmin.
+Added Soft Delete in User and Article models.
+Added Route destroyConfirm and destroy.
+In ArticleController added methods destroyConfirm and destroy.
+Added logic in methods.

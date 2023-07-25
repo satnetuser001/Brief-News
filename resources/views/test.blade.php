@@ -21,5 +21,16 @@
     @endphp
 @endif
 
+<!-- debugging -->
+{{--
+	@if(array_key_exists('debugging', $context) and $context['debugging'] != NULL)
+	    <?php
+	        echo '<pre>';
+	        var_dump($context);
+	        echo '</pre>'
+	    ?>
+	@endif
+--}}
+
 </body>
 </html>

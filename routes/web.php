@@ -24,5 +24,6 @@ Route::get('articles/create', [ArticleController::class, 'create'])->name('artic
 Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
 Route::get('articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
 Route::patch('articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
-Route::delete('articles/{sourceLink}', [ArticleController::class, 'deleteSourceLink'])->name('articles.deleteSourceLink');
-Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::delete('articles/{sourceLink}/deleteSourceLink', [ArticleController::class, 'deleteSourceLink'])->name('articles.deleteSourceLink');
+Route::get('articles/{article}/destroyConfirm', [ArticleController::class, 'destroyConfirm'])->name('articles.destroyConfirm');
+Route::delete('articles/{article}/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
