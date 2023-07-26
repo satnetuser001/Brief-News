@@ -25,7 +25,7 @@ class IsAdmin
             return $next($request);
         }
         else{
-            return redirect('home');
+            return redirect()->route('home');
         }
         
     }

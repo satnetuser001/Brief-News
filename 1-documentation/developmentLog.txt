@@ -248,3 +248,8 @@ Added Soft Delete in User and Article models.
 Added Route destroyConfirm and destroy.
 In ArticleController added methods destroyConfirm and destroy.
 Added logic in methods.
+
+26.07.23
+Fix the wrong redirect in IsAdmin on denial.
+Dump DB in the archive.
+Restore article:
