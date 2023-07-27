@@ -34,9 +34,7 @@ class HomeController extends Controller
     public function home(Request $request)
     {
         $context = [
-            /*because home.blade.php is used in Home and MyArticle Pages,
-            sent out 'route' setting for links*/
-            'route' => 'home',
+            'pageName' => 'Главная',
             'rubricsCombination' => [],
             'articles' => [],
             'debugging' => [],
@@ -116,6 +114,6 @@ class HomeController extends Controller
             }
         }    
 
-        return view('home', ['context' => $context]);
+        return view('showArticles', ['context' => $context]);
     }
 }

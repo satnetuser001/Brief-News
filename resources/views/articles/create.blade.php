@@ -95,4 +95,5 @@
 		</script>
 		<input type="submit" value="Сохранить">
 	</form>
+	<a href="{{ route('home') }}">Отмена</a>
 @endsection

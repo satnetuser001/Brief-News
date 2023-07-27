@@ -21,9 +21,9 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/userArticles', [ArticleController::class, 'userArticles'])->name('articles.userArticles');
 Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');
-Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+Route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
 Route::get('articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-Route::patch('articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
+Route::patch('articles/{article}/update', [ArticleController::class, 'update'])->name('articles.update');
 Route::delete('articles/{sourceLink}/deleteSourceLink', [ArticleController::class, 'deleteSourceLink'])->name('articles.deleteSourceLink');
 Route::get('articles/{article}/destroyConfirm', [ArticleController::class, 'destroyConfirm'])->name('articles.destroyConfirm');
 Route::delete('articles/{article}/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');

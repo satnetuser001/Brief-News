@@ -12,7 +12,7 @@
             <h1>Brief News</h1>
         </section>
         <section>
-            {{-- some user data --}}
+            <!-- user data -->
             @auth
                 @if (Auth::check() and Auth::user()->name)
                     Ваше имя <b>{{ Auth::user()->name }}</b><br>
@@ -25,8 +25,7 @@
                 гость<br>
             @endguest
 
-            {{-- User interface buttons --}}
-
+            <!-- User interface buttons -->
             <a href="{{ route('home') }}">Главная</a>
 
             @auth
@@ -62,10 +61,10 @@
 
     <main>
         @yield('content')
-        <hr>
     </main>
 
     <footer>
+        <hr>
         <b>Footer:</b> Отсутствует на всех страницах :)
     </footer>
 

@@ -252,4 +252,12 @@ Added logic in methods.
 26.07.23
 Fix the wrong redirect in IsAdmin on denial.
 Dump DB in the archive.
+Added a cancel button on the Create and Edit pages.
+
 Restore article:
+Make changes to technical tasks: deleted articles were viewed on the Deleted Articles page.
+
+27.07.23
+Home Page, My Articles, and Deleted Articles use the same view home.blade.php.
+Rename home.blade.php in showArticles.blade.php and adapt the page code for use in different cases.
+Moved the Rubrics And Locale Panel to the included template rubricsAndLocalePanel.blade.php for readability of the page code.

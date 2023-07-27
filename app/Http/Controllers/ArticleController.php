@@ -56,9 +56,7 @@ class ArticleController extends Controller
     {
         
         $context = [
-            /*because home.blade.php is used in Home and MyArticle Pages,
-            sent out 'route' setting for links*/
-            'route' => 'articles.userArticles',
+            'pageName' => 'Мои статьи',
             'rubricsCombination' => [],
             'articles' => [],
             'debugging' => [],
@@ -117,7 +115,7 @@ class ArticleController extends Controller
                 $context['debugging'] += ['in if' => 'my articles, first request'];
             }
         }
-        return view('home', ['context' => $context]);
+        return view('showArticles', ['context' => $context]);
     }
 
     /**
@@ -222,6 +220,24 @@ class ArticleController extends Controller
      * Soft delete Article in DB.
      */
     public function destroy(Article $article)
+    {
+        $article->delete();
+        return redirect()->route('home');
+    }
+
+    /**
+     * Show all deleted Articles.
+     */
+    public function trashedArticles(Article $article)
+    {
+        $article->delete();
+        return redirect()->route('home');
+    }
+
+    /**
+     * Restore deleted Article.
+     */
+    public function restoreArticle(Article $article)
     {
         $article->delete();
         return redirect()->route('home');
