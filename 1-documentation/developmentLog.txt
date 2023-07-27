@@ -261,3 +261,6 @@ Make changes to technical tasks: deleted articles were viewed on the Deleted Art
 Home Page, My Articles, and Deleted Articles use the same view home.blade.php.
 Rename home.blade.php in showArticles.blade.php and adapt the page code for use in different cases.
 Moved the Rubrics And Locale Panel to the included template rubricsAndLocalePanel.blade.php for readability of the page code.
+In showArticles.blade.php added Restore article button.
+In ArticleController added trashedArticles and restoreArticle methods and added logic to them.
+In Route added trashedArticles and restore routes.

@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/userArticles', [ArticleController::class, 'userArticles'])->name('articles.userArticles');
+Route::get('/myArticles', [ArticleController::class, 'myArticles'])->name('articles.myArticles');
 Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');
 Route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
 Route::get('articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
@@ -27,3 +27,5 @@ Route::patch('articles/{article}/update', [ArticleController::class, 'update'])-
 Route::delete('articles/{sourceLink}/deleteSourceLink', [ArticleController::class, 'deleteSourceLink'])->name('articles.deleteSourceLink');
 Route::get('articles/{article}/destroyConfirm', [ArticleController::class, 'destroyConfirm'])->name('articles.destroyConfirm');
 Route::delete('articles/{article}/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('articles/trashedArticles', [ArticleController::class, 'trashedArticles'])->name('articles.trashedArticles');
+Route::patch('articles/{id}/restore', [ArticleController::class, 'restoreArticle'])->name('articles.restore');

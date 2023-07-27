@@ -46,13 +46,17 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin')->only(['destroyConfirm', 'destroy']);
+        $this->middleware('isAdmin')->only(['destroyConfirm',
+                                            'destroy',
+                                            'trashedArticles',
+                                            'restoreArticle',
+                                            ]);
     }
 
     /**
      * Show all articles of the user
      */
-    public function userArticles(Request $request)
+    public function myArticles(Request $request)
     {
         
         $context = [
@@ -157,7 +161,7 @@ class ArticleController extends Controller
             }
         }
         
-        return redirect()->route('articles.userArticles');
+        return redirect()->route('articles.myArticles');
     }
 
     /**
@@ -205,7 +209,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('articles.userArticles');
+        return redirect()->route('articles.myArticles');
     }
 
     /**
@@ -228,18 +232,78 @@ class ArticleController extends Controller
     /**
      * Show all deleted Articles.
      */
-    public function trashedArticles(Article $article)
+    public function trashedArticles(Request $request)
     {
-        $article->delete();
-        return redirect()->route('home');
+        $context = [
+            'pageName' => 'Удаленные статьи',
+            'rubricsCombination' => [],
+            'articles' => [],
+            'debugging' => [],
+        ];
+
+        //repeated request
+        if ($request->input() != NULL) {
+            
+            //Rubrics and locale panel
+            $arrRubricsCombination = $this->converterRubricsCombination($request->input());
+            $context['rubricsCombination'] = $arrRubricsCombination;
+
+            //news
+            if ($arrRubricsCombination['all'] == 1) {
+                $objsArticles = Article::onlyTrashed()->
+                                        latest()->
+                                        paginate($this->articlesPerPage)->
+                                        appends($arrRubricsCombination);
+                $context['articles'] = $objsArticles;
+            } else {
+                $objsArticles = Article::onlyTrashed();
+                $objsArticles = $this->articleSelector($objsArticles, $arrRubricsCombination)->
+                                        latest()->
+                                        paginate($this->articlesPerPage)->
+                                        appends($arrRubricsCombination);
+                $context['articles'] = $objsArticles;
+            }
+
+            //debugging
+            if ($this->debuggingStatus) {
+                $context['debugging'] += ['in if' => 'my articles, repeated request'];
+                $context['debugging'] += ['pressed' => $request->input()['pressed']];
+            }
+        }
+
+        //first request
+        else{
+
+            //Rubrics and locale panel
+            $arrRubricsCombination = $this->converterRubricsCombination(
+                                        RubricsCombination::find(1)->toArray()
+                                    );
+            $context['rubricsCombination'] = $arrRubricsCombination;
+
+            //news
+            $objsArticles = Article::onlyTrashed()->
+                                    latest()->
+                                    paginate($this->articlesPerPage)->
+                                    appends($arrRubricsCombination);
+            $context['articles'] = $objsArticles;
+
+            //debugging
+            if ($this->debuggingStatus) {
+                $context['debugging'] += ['in if' => 'deleted articles, first request'];
+                $context['debugging'] += ['objsArticles' => $objsArticles->toArray()];
+            }
+        }
+        return view('showArticles', ['context' => $context]);
+
     }
 
     /**
      * Restore deleted Article.
      */
-    public function restoreArticle(Article $article)
+    public function restoreArticle($id)
     {
-        $article->delete();
-        return redirect()->route('home');
+        Article::onlyTrashed()->find($id)->restore();
+
+        return redirect()->route('articles.trashedArticles');
     }
 }

@@ -24,6 +24,7 @@
 
     <!-- News -->
     @if(array_key_exists('articles', $context) and $context['articles'] != NULL)
+        <!-- article -->
         @foreach ($context['articles'] as $article)
             <details>
                 <summary>
@@ -44,7 +45,10 @@
                     </div>
                 @endforeach
             </details>
+
+            <!-- edit article button -->
             @if(
+                $article['deleted_at'] == NULL and
                 Auth::check() and 
                 (
                     Auth::user()->id == $article->user_id or
@@ -56,7 +60,10 @@
                     <a href="{{ route('articles.edit', [$article->id]) }}">Редактировать</a>
                 </div>
             @endif
+
+            <!-- delete article button -->
             @if(
+                $article['deleted_at'] == NULL and
                 Auth::check() and 
                 (
                     Auth::user()->role == "root" or
@@ -64,8 +71,17 @@
                 )
             )
                 <div>
-                     <a href="{{ route('articles.destroyConfirm', [$article->id]) }}">Удалить</a>
+                    <a href="{{ route('articles.destroyConfirm', [$article->id]) }}">Удалить</a>
                 </div>
+            @endif
+
+            <!-- restore article button -->
+            @if($article['deleted_at'] != NULL)
+                <form action="{{ route('articles.restore', [$article->id]) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <input type="submit" value="Восстановить статью">
+                </form>
             @endif
         @endforeach
 
