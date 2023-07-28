@@ -46,14 +46,10 @@ class ArticleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin')->only(['destroyConfirm',
-                                            'destroy',
-                                            'trashedArticles',
-                                            'restoreArticle',
-                                            ]);
-        $this->middleware('can:update,article')->only(['edit',
-                                                       'update',
-                                                       ]);
+        $this->middleware('can:viewAny,App\Models\Article')->only('my');
+        $this->middleware('can:create,App\Models\Article')->only(['create', 'store']);
+        $this->middleware('can:update,article')->only(['edit', 'update']);
+        $this->middleware('isAdmin')->only(['destroyConfirm', 'destroy', 'trashed', 'restore']);
     }
 
     /**

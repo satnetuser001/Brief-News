@@ -15,6 +15,14 @@ class ArticlePolicy
         //
     }
 
+    /**
+     * Does the user have a writer role.
+     * return bool
+     */
+    protected function isWriter(User $user)
+    {
+        return $user->role == 'writer';
+    }
 
     /**
      * Does the user own the article.
@@ -33,6 +41,22 @@ class ArticlePolicy
         if ($user->role == 'root' or $user->role == 'admin') {
             return true;
         }
+    }
+
+    /**
+     * Does the writer try to view his articles.
+     * return bool
+     */
+    public function viewAny($user){
+        return $this->isWriter($user);
+    }
+
+    /**
+     * Does the writer try to create the article.
+     * return bool
+     */
+    public function create($user){
+        return $this->isWriter($user);
     }
 
     /**

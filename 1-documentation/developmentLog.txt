@@ -271,3 +271,4 @@ To edit the article could only the author or admin, create a policy:
 Do the model to policy mappings in AuthServiceProvider.php.
 Added logic in ArticlePolicy.
 Added check with ArticlePolicy in ArticleController in construct for edit and update methods.
+Added check with ArticlePolicy in ArticleController in construct for my, create, and store methods.
