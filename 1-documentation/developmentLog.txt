@@ -264,3 +264,10 @@ Moved the Rubrics And Locale Panel to the included template rubricsAndLocalePane
 In showArticles.blade.php added Restore article button.
 In ArticleController added trashedArticles and restoreArticle methods and added logic to them.
 In Route added trashedArticles and restore routes.
+
+28.07.23
+To edit the article could only the author or admin, create a policy:
+	php artisan make:policy ArticlePolicy
+Do the model to policy mappings in AuthServiceProvider.php.
+Added logic in ArticlePolicy.
+Added check with ArticlePolicy in ArticleController in construct for edit and update methods.

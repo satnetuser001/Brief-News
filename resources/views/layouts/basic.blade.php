@@ -31,11 +31,11 @@
             @auth
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin' or Auth::user()->role == 'writer')
                     <a href="{{ route('articles.create') }}">Создать статью</a>
-                    <a href="{{ route('articles.myArticles') }}">Мои статьи</a>
+                    <a href="{{ route('articles.my') }}">Мои статьи</a>
                 @endif
 
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin')
-                    <a href="{{ route('articles.trashedArticles') }}">Удаленные статьи</a>
+                    <a href="{{ route('articles.trashed') }}">Удаленные статьи</a>
                     <a href="#">Все профили</a>
                 @endif
 

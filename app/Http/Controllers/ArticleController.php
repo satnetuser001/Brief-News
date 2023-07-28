@@ -51,12 +51,15 @@ class ArticleController extends Controller
                                             'trashedArticles',
                                             'restoreArticle',
                                             ]);
+        $this->middleware('can:update,article')->only(['edit',
+                                                       'update',
+                                                       ]);
     }
 
     /**
      * Show all articles of the user
      */
-    public function myArticles(Request $request)
+    public function my(Request $request)
     {
         
         $context = [
@@ -161,7 +164,7 @@ class ArticleController extends Controller
             }
         }
         
-        return redirect()->route('articles.myArticles');
+        return redirect()->route('articles.my');
     }
 
     /**
@@ -209,7 +212,7 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('articles.myArticles');
+        return redirect()->route('articles.my');
     }
 
     /**
@@ -232,7 +235,7 @@ class ArticleController extends Controller
     /**
      * Show all deleted Articles.
      */
-    public function trashedArticles(Request $request)
+    public function trashed(Request $request)
     {
         $context = [
             'pageName' => 'Удаленные статьи',
@@ -300,10 +303,10 @@ class ArticleController extends Controller
     /**
      * Restore deleted Article.
      */
-    public function restoreArticle($id)
+    public function restore($id)
     {
         Article::onlyTrashed()->find($id)->restore();
 
-        return redirect()->route('articles.trashedArticles');
+        return redirect()->route('articles.trashed');
     }
 }
