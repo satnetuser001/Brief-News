@@ -39,7 +39,7 @@
                     <a href="#">Все профили</a>
                 @endif
 
-                <a href="#">Мой профиль</a>
+                <a href="{{ route('users.myProfile') }}">Мой профиль</a>
 
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf

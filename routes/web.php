@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,25 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
+//Auth Controllers
 Auth::routes();
 
+//HomeController
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/my', [ArticleController::class, 'my'])->name('articles.my');
-Route::get('articles/create', [ArticleController::class, 'create'])->name('articles.create');
+//ArticleController
+Route::get('/articles/my', [ArticleController::class, 'my'])->name('articles.my');
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
 Route::post('/articles/store', [ArticleController::class, 'store'])->name('articles.store');
-Route::get('articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-Route::patch('articles/{article}/update', [ArticleController::class, 'update'])->name('articles.update');
-Route::get('articles/{article}/destroyConfirm', [ArticleController::class, 'destroyConfirm'])->name('articles.destroyConfirm');
-Route::delete('articles/{article}/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
-Route::get('articles/trashed', [ArticleController::class, 'trashed'])->name('articles.trashed');
-Route::patch('articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::patch('/articles/{article}/update', [ArticleController::class, 'update'])->name('articles.update');
+Route::get('/articles/{article}/destroyConfirm', [ArticleController::class, 'destroyConfirm'])->name('articles.destroyConfirm');
+Route::delete('/articles/{article}/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('/articles/trashed', [ArticleController::class, 'trashed'])->name('articles.trashed');
+Route::patch('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
+
+//UserController
+Route::get('/users/myProfile', [UserController::class, 'myProfile'])->name('users.myProfile');
+Route::patch('/users/{user}/update', [UserController::class, 'update'])->name('users.update');
+Route::get('/users/editPassword', [UserController::class, 'editPassword'])->name('users.editPassword');
+Route::any('/users/{user}/updatePassword', [UserController::class, 'updatePassword'])->name('users.updatePassword');

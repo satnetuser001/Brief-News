@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<h3>Context Display</h3>
+<h3>Context Display</h3>
 
 <pre>
     @php
@@ -16,6 +16,7 @@
 </pre>
 
 @if(old())
+	<h3>Old Display</h3>
 	@php
         var_dump(old());
     @endphp

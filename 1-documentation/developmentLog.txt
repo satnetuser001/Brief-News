@@ -272,3 +272,34 @@ Do the model to policy mappings in AuthServiceProvider.php.
 Added logic in ArticlePolicy.
 Added check with ArticlePolicy in ArticleController in construct for edit and update methods.
 Added check with ArticlePolicy in ArticleController in construct for my, create, and store methods.
+
+31.07.23
+Added change to technical task:
+In Admin Page moved the "Deleted Articles" button from the rubrics panel to the header;
+
+User functionality:
+Created a UserController:
+	php artisan make:controller UserController
+Added in construct middleware('auth').
+My Profile Page:
+Created Route users.myProfile.
+In UserController created method myProfile.
+In Views created directory users.
+Created View myProfile.blade.php.
+
+01.08.23
+In UserController in method myProfile changed logic.
+In View myProfile.blade.php created User customization panel of rubrics and locale.
+
+02.08.23
+Created Route users.update to save changes in a user profile.
+In UserController created method update.
+In UserController added validation rules and messages.
+Added validation to the User customization panel of rubrics and locale in UserController in the update method.
+Added validation: email, name, surname, nickname.
+In UserController in method update added logic 'save edited user'.
+
+Update user password:
+Added routes: users.editPassword, users.updatePassword.
+In UserController created methods: editPassword, updatePassword.
+Create view editPassword.blade.php.

@@ -12,8 +12,7 @@ use App\Http\Controllers\Traits\ArticleSelector;
 use App\Http\Controllers\Traits\IdRubricsCombination;
 
 /**
- * This controller is responsible for pages:
- * 
+ * This controller is responsible for the functionality of the article.
  */
 class ArticleController extends Controller
 {
@@ -179,7 +178,7 @@ class ArticleController extends Controller
         //edited data validation
         $validated = $request->validate(self::VALIDATOR_RULS, self::VALIDATOR_MESSAGES);
         
-        //define edited article rubrics combination id
+        //define rubrics combination id of edited article
         $idRubricsCombination = $this->idRubricsCombination(
                                             $validated['arrRubricsCombination'],
                                             $validated['arrLocaleCombination'],
