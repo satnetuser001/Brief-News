@@ -15,9 +15,15 @@ class UserController extends Controller
 {
     use IdRubricsCombination;
 
+    /**
+     * Controller settings
+     */
+    protected $profilesPerPage = 15;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin')->only(['allProfiles']);
     }
 
     /**
@@ -32,7 +38,7 @@ class UserController extends Controller
     /**
      * Update user in DB.
      */
-    public function update(Request $request, User $user)
+    public function updateMyProfile(Request $request, User $user)
     {
         //Validation rules and messages
         define('VALIDATOR_RULS', ['arrRubricsCombination' => "required_without_all:arrRubricsCombination.*",
@@ -121,5 +127,23 @@ class UserController extends Controller
 
             return redirect()->route('users.myProfile');
         }
+    }
+
+    /**
+     * Show all users profiles to the admin.
+     */
+    public function allProfiles()
+    {
+        $context = User::latest('id')->paginate($this->profilesPerPage);
+
+        return view('users.allProfiles', ['context' => $context]);
+    }
+
+    /**
+     * Show the user profile to the admin.
+     */
+    public function editUserProfile(User $user)
+    {
+        return response('UserController, editUserProfile');
     }
 }

@@ -12,7 +12,7 @@
     </div>
 
 
-    <form action="{{ route('users.update', [$context['id']]) }}" method="POST">
+    <form action="{{ route('users.updateMyProfile', [$context['id']]) }}" method="POST">
 
         @csrf
         @method('PATCH')

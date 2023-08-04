@@ -303,3 +303,20 @@ Update user password:
 Added routes: users.editPassword, users.updatePassword.
 In UserController created methods: editPassword, updatePassword.
 Create view editPassword.blade.php.
+
+03.08.23
+Added some changes to technical task.
+
+04.08.23
+Editing users by the administrator:
+
+Show all profiles:
+Create route allProfiles.
+Create view allProfile.blade.php.
+In UserController create allProfiles method.
+Added logic to method.
+Added code in the view.
+
+Edit profile:
+Create route editUserProfile.
+Create view .

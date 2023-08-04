@@ -35,6 +35,8 @@ Route::patch('/articles/{id}/restore', [ArticleController::class, 'restore'])->n
 
 //UserController
 Route::get('/users/myProfile', [UserController::class, 'myProfile'])->name('users.myProfile');
-Route::patch('/users/{user}/update', [UserController::class, 'update'])->name('users.update');
+Route::patch('/users/{user}/updateMyProfile', [UserController::class, 'updateMyProfile'])->name('users.updateMyProfile');
 Route::get('/users/editPassword', [UserController::class, 'editPassword'])->name('users.editPassword');
-Route::any('/users/{user}/updatePassword', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+Route::patch('/users/{user}/updatePassword', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+Route::get('/users/allProfiles', [UserController::class, 'allProfiles'])->name('users.allProfiles');
+Route::get('/users/{user}/editUserProfile', [UserController::class, 'editUserProfile'])->name('users.editUserProfile');

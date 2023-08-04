@@ -36,7 +36,7 @@
 
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin')
                     <a href="{{ route('articles.trashed') }}">Удаленные статьи</a>
-                    <a href="#">Все профили</a>
+                    <a href="{{ route('users.allProfiles') }}">Все профили</a>
                 @endif
 
                 <a href="{{ route('users.myProfile') }}">Мой профиль</a>
