@@ -40,3 +40,4 @@ Route::get('/users/editPassword', [UserController::class, 'editPassword'])->name
 Route::patch('/users/{user}/updatePassword', [UserController::class, 'updatePassword'])->name('users.updatePassword');
 Route::get('/users/allProfiles', [UserController::class, 'allProfiles'])->name('users.allProfiles');
 Route::get('/users/{user}/editUserProfile', [UserController::class, 'editUserProfile'])->name('users.editUserProfile');
+Route::patch('/users/{user}/updateUserProfile', [UserController::class, 'updateUserProfile'])->name('users.updateUserProfile');

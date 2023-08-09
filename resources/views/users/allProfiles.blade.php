@@ -11,16 +11,15 @@
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>surname</th>
-                    <th>nickname</th>
-                    <th>role</th>
-                    <th>status</th>
-                    <th>email</th>
-                    <th>rubrick_id</th>
-                    <th>created_at</th>
-                    <th>deleted_at</th>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Псевдоним</th>
+                    <th>Роль</th>
+                    <th>Статус</th>
+                    <th>Email</th>
+                    <th>Дата создания</th>
+                    <th>&nbsp</th>
                     <th>&nbsp</th>
                 </tr>
             </thead>
@@ -34,12 +33,21 @@
                         <td>{{ $user->role }}</td>
                         <td>{{ $user->status }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->rubrics_combination_id }}</td>
                         <td>{{ $user->created_at }}</td>
-                        <td>{{ $user->deleted_at }}</td>
-                        <td>
-                            <a href="{{ route('users.editUserProfile', ['user'=>$user->id]) }}">Редактировать</a>
-                        </td>
+                        @if(Auth::check() and $user->role != "root" or Auth::user()->role == "root")
+                            <td>
+                                <a href="{{ route('users.editUserProfile', ['user'=>$user->id]) }}">Редактировать</a>
+                            </td>
+                        @else
+                            <th>&nbsp</th>
+                        @endif
+                        @if($user->role != "root")
+                            <td>
+                                <a href="#">Удалить</a>
+                            </td>
+                        @else
+                            <th>&nbsp</th>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
