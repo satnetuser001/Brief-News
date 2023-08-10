@@ -41,3 +41,5 @@ Route::patch('/users/{user}/updatePassword', [UserController::class, 'updatePass
 Route::get('/users/allProfiles', [UserController::class, 'allProfiles'])->name('users.allProfiles');
 Route::get('/users/{user}/editUserProfile', [UserController::class, 'editUserProfile'])->name('users.editUserProfile');
 Route::patch('/users/{user}/updateUserProfile', [UserController::class, 'updateUserProfile'])->name('users.updateUserProfile');
+Route::get('/users/{user}/destroyConfirm', [UserController::class, 'destroyConfirm'])->name('users.destroyConfirm');
+Route::delete('/users/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');

@@ -23,7 +23,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin')->only(['allProfiles']);
+        $this->middleware('isAdmin')->except(['myProfile', 'updateMyProfile', 'editPassword', 'updatePassword']);
         //$this->middleware('isNotRoot')->only('editUserProfile', 'editUserProfile', ...); //it's need to do
     }
 
@@ -222,5 +222,24 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('users.allProfiles');
     }
+
+    /**
+     * User deletion confirmation.
+     */
+    public function destroyConfirm(User $user)
+    {
+        return view('users.destroy', ['context' => $user]);
+    }
+
+    /**
+     * Soft delete User in DB.
+     */
+    public function destroy(User $user)
+    {
+        //return response('UserController, destroy');
+        $user->delete();
+        return redirect()->route('users.allProfiles');
+    }
+
     //return view('test', ['context' => $user->toArray()]);
 }

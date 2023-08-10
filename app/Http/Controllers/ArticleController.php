@@ -198,7 +198,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Soft delete Article in DB.
+     * Article deletion confirmation.
      */
     public function destroyConfirm(Article $article)
     {

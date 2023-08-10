@@ -335,3 +335,14 @@ Finished updateUserProfile method logic.
 Deleted 'debugging' from the ArticleController and Views.
 Changes made to the technical task:
 'user panel' for the administrator will be like 'articles': All profiles, Create profile, My profile, Deleted profiles.
+
+Delete User:
+Added Route users.destroyConfirm.
+In UserController created a method destroyConfirm and add logic to it.
+Added delete link into allProfiles.blade.php.
+Added Route users.destroy.
+In UserController created a method destroy and add logic to it.
+
+Found a bug: have no default rubrics_combination_id value when creating a new user.
+Corrected: 'Registers Users' page, for now, has no rubrics panel.
+Found a bug: an error occurs on the "All Articles" page when trying to read a deleted author of an article.

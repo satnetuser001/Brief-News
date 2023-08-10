@@ -43,7 +43,7 @@
                         @endif
                         @if($user->role != "root")
                             <td>
-                                <a href="#">Удалить</a>
+                                <a href="{{ route('users.destroyConfirm', ['user'=>$user->id]) }}">Удалить</a>
                             </td>
                         @else
                             <th>&nbsp</th>
