@@ -22,7 +22,6 @@ class ArticleController extends Controller
      * Controller settings
      */
     protected $articlesPerPage = 15;
-    protected $debuggingStatus = false;
 
     /**
      * Validation rules and messages
@@ -61,7 +60,6 @@ class ArticleController extends Controller
             'pageName' => 'Мои статьи',
             'rubricsCombination' => [],
             'articles' => [],
-            'debugging' => [],
         ];
 
         //repeated request
@@ -87,12 +85,6 @@ class ArticleController extends Controller
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             }
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'my articles, repeated request'];
-                $context['debugging'] += ['pressed' => $request->input()['pressed']];
-            }
         }
 
         //first request
@@ -111,11 +103,6 @@ class ArticleController extends Controller
                                 paginate($this->articlesPerPage)->
                                 appends($arrRubricsCombination);
             $context['articles'] = $objsArticles;
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'my articles, first request'];
-            }
         }
         return view('showArticles', ['context' => $context]);
     }
@@ -236,7 +223,6 @@ class ArticleController extends Controller
             'pageName' => 'Удаленные статьи',
             'rubricsCombination' => [],
             'articles' => [],
-            'debugging' => [],
         ];
 
         //repeated request
@@ -261,12 +247,6 @@ class ArticleController extends Controller
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             }
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'my articles, repeated request'];
-                $context['debugging'] += ['pressed' => $request->input()['pressed']];
-            }
         }
 
         //first request
@@ -284,15 +264,8 @@ class ArticleController extends Controller
                                     paginate($this->articlesPerPage)->
                                     appends($arrRubricsCombination);
             $context['articles'] = $objsArticles;
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'deleted articles, first request'];
-                $context['debugging'] += ['objsArticles' => $objsArticles->toArray()];
-            }
         }
         return view('showArticles', ['context' => $context]);
-
     }
 
     /**

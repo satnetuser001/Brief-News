@@ -109,7 +109,7 @@
                 @endif
             >
             <label>Изменить пароль:</label>
-            <input name="newPassword" value="{{ old('newPassword') }}">
+            <input name="newPassword" value="{{ old('newPassword') }}" placeholder="не изменится">
             @error('newPassword')
                 <span><strong>{{ $message }}</strong></span>
             @enderror

@@ -330,3 +330,8 @@ In UserController created the updateUserProfile method and added validation into
 09.08.23
 Added functionality into view editUserProfile.blade.php.
 Finished updateUserProfile method logic.
+
+10.08.23
+Deleted 'debugging' from the ArticleController and Views.
+Changes made to the technical task:
+'user panel' for the administrator will be like 'articles': All profiles, Create profile, My profile, Deleted profiles.

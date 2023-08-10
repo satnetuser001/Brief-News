@@ -98,11 +98,7 @@
 			<div name='links' id='links'></div>
 			<input type='button' value='Добавить новую ссылку на источник' onclick="addLinkInput()">
 		</div>
-			{{--
-			@error('links.*')
-				<span><strong>{{ $message }}</strong></span>
-			@enderror
-			--}}
+		
 		<script type="text/javascript">
 			let currentNumber = 0; 
 				function addLinkInput(){
