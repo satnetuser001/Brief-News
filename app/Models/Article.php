@@ -28,10 +28,11 @@ class Article extends Model
     protected $fillable = ['user_id', 'rubrics_combination_id', 'header', 'body'];
 
     /**
-     * Get writer this article
+     * Get writer this article.
+     * withTrashed() - show the article of the deleted user.
      */
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     /**

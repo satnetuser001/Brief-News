@@ -346,3 +346,6 @@ In UserController created a method destroy and add logic to it.
 Found a bug: have no default rubrics_combination_id value when creating a new user.
 Corrected: 'Registers Users' page, for now, has no rubrics panel.
 Found a bug: an error occurs on the "All Articles" page when trying to read a deleted author of an article.
+
+11.08.23
+Fixed bug: an error occurs on the "All Articles" page when trying to read a deleted author of an article.
