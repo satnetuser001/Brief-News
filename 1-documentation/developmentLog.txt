@@ -358,3 +358,10 @@ Create view createUserProfile.blade.php.
 Added Route users.storeUserProfile.
 In UserController created a method storeUserProfile and add logic to it.
 Do manual test, all work))
+
+Restore User:
+Added Route users.trashedUsersProfiles.
+In UserController created a method trashedUsersProfiles and add logic to it.
+Edited view allUsersProfiles.blade.php into showUsersProfiles to show deleted and active users.
+Added Route users.restoreUserProfile.
+In UserController created a method restoreUserProfile and add logic to it.

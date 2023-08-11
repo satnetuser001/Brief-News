@@ -137,7 +137,7 @@ class UserController extends Controller
     {
         $context = User::latest('id')->paginate($this->profilesPerPage);
 
-        return view('users.allProfiles', ['context' => $context]);
+        return view('users.showUsersProfiles', ['context' => $context]);
     }
 
     /**
@@ -321,16 +321,18 @@ class UserController extends Controller
      */
     public function trashedUsersProfiles()
     {
-        return response('UserCantroller, trashedUsersProfiles');
+        $context = User::onlyTrashed()->latest('id')->paginate($this->profilesPerPage);
+
+        return view('users.showUsersProfiles', ['context' => $context]);
     }
 
     /**
      * Restore trashed user.
      */
-    public function restoreUserProfile()
+    public function restoreUserProfile($id)
     {
-        return response('UserCantroller, restoreUserProfile');
-    }
+        User::onlyTrashed()->find($id)->restore();
 
-    //return view('test', ['context' => $user->toArray()]);
+        return redirect()->route('users.trashedUsersProfiles');
+    }
 }
