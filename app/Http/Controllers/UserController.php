@@ -141,6 +141,81 @@ class UserController extends Controller
     }
 
     /**
+     * Show create user page to the admin.
+     */
+    public function createUserProfile()
+    {
+        return view('users.createUserProfile');
+    }
+
+    /**
+     * Store new user created by admin.
+     */
+    public function storeUserProfile(Request $request)
+    {
+        //Validation rules and messages
+        define('VALIDATOR_RULS', ['arrRubricsCombination' => "required_without_all:arrRubricsCombination.*",
+                                'arrLocaleCombination' => "required_without_all:arrLocaleCombination.*",
+                                'role' => 'required|in:admin,writer,reader',
+                                'status' => 'required|in:active,ban',
+                                'name' => 'required|max:255',
+                                'surname' => 'required|max:255',
+                                'nickname' => 'required|max:255',
+                                'email' => 'required|email|max:255',
+                                'password' => 'required|min:4|max:255',
+                                ]
+                );
+        define('VALIDATOR_MESSAGES', ['arrRubricsCombination' => 'Выберете хотябы одну рубрику',
+                                    'arrLocaleCombination' => 'Выберете хотябы одну локаль',
+                                    'role' => 'Несовпадение значения при выборе Роли, сообщите Администратору об ошибке в работе сайта',
+                                    'status' => 'Несовпадение значения при выборе Статуса, сообщите Администратору об ошибке в работе сайта',
+                                    'name.required' => 'Имя не должно быть пустым',
+                                    'name.max' => 'Имя не должно содержать больше 255 символов',
+                                    'surname.required' => 'Фамилия не должна быть пустой',
+                                    'surname.max' => 'Фамилия не должна содержать больше 255 символов',
+                                    'nickname.required' => 'Псевдоним не должен быть пустым',
+                                    'nickname.max' => 'Псевдоним не должен содержать больше 255 символов',
+                                    'email.required' => 'Email не должен быть пустым',
+                                    'email.email' => 'Неверный формат адреса электронной почты',
+                                    'email.max' => 'Email не должен содержать больше 255 символов',
+                                    'password.required' => 'Пароль не должен быть пустым',
+                                    'password.min' => 'Пароль не должен содержать менее 4 символов',
+                                    'password.max' => 'Пароль не должен содержать больше 255 символов',
+                                        ]
+                );
+
+        //data validation of the created user
+        $validated = $request->validate(VALIDATOR_RULS, VALIDATOR_MESSAGES);
+
+        //define rubrics combination id of created user
+        $idRubricsCombination = $this->idRubricsCombination(
+                                            $validated['arrRubricsCombination'],
+                                            $validated['arrLocaleCombination'],
+                                );
+
+        $objUser = new User();
+
+        //add data to the user object
+        $objUser->fill(['rubrics_combination_id' => $idRubricsCombination,
+                     'role' => $validated['role'],
+                     'status' => $validated['status'],
+                     'name' => $validated['name'],
+                     'surname' => $validated['surname'],
+                     'nickname' => $validated['nickname'],
+                     'email' => $validated['email'],
+                     'password' => Hash::make($validated['password']),
+                    ]);
+
+        //newly appointed admin can have only active status
+        if ($validated['role'] == 'admin') {
+            $objUser->fill(['status' => 'active']);
+        }
+
+        $objUser->save();
+        return redirect()->route('users.allProfiles');
+    }
+
+    /**
      * Show the user profile to the admin.
      */
     public function editUserProfile(User $user)
@@ -239,6 +314,22 @@ class UserController extends Controller
         //return response('UserController, destroy');
         $user->delete();
         return redirect()->route('users.allProfiles');
+    }
+
+    /**
+     * Show trashed users.
+     */
+    public function trashedUsersProfiles()
+    {
+        return response('UserCantroller, trashedUsersProfiles');
+    }
+
+    /**
+     * Restore trashed user.
+     */
+    public function restoreUserProfile()
+    {
+        return response('UserCantroller, restoreUserProfile');
     }
 
     //return view('test', ['context' => $user->toArray()]);

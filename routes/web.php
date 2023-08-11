@@ -34,12 +34,18 @@ Route::get('/articles/trashed', [ArticleController::class, 'trashed'])->name('ar
 Route::patch('/articles/{id}/restore', [ArticleController::class, 'restore'])->name('articles.restore');
 
 //UserController
+	//writer, reader
 Route::get('/users/myProfile', [UserController::class, 'myProfile'])->name('users.myProfile');
 Route::patch('/users/{user}/updateMyProfile', [UserController::class, 'updateMyProfile'])->name('users.updateMyProfile');
 Route::get('/users/editPassword', [UserController::class, 'editPassword'])->name('users.editPassword');
 Route::patch('/users/{user}/updatePassword', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+	//admin
 Route::get('/users/allProfiles', [UserController::class, 'allProfiles'])->name('users.allProfiles');
+Route::get('/users/createUserProfile', [UserController::class, 'createUserProfile'])->name('users.createUserProfile');
+Route::post('/users/storeUserProfile', [UserController::class, 'storeUserProfile'])->name('users.storeUserProfile');
 Route::get('/users/{user}/editUserProfile', [UserController::class, 'editUserProfile'])->name('users.editUserProfile');
 Route::patch('/users/{user}/updateUserProfile', [UserController::class, 'updateUserProfile'])->name('users.updateUserProfile');
 Route::get('/users/{user}/destroyConfirm', [UserController::class, 'destroyConfirm'])->name('users.destroyConfirm');
 Route::delete('/users/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/users/trashedUsersProfiles', [UserController::class, 'trashedUsersProfiles'])->name('users.trashedUsersProfiles');
+Route::patch('/users/{id}/restoreUserProfile', [UserController::class, 'restoreUserProfile'])->name('users.restoreUserProfile');

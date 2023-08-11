@@ -349,3 +349,12 @@ Found a bug: an error occurs on the "All Articles" page when trying to read a de
 
 11.08.23
 Fixed bug: an error occurs on the "All Articles" page when trying to read a deleted author of an article.
+
+Create User:
+Added Route users.createUserProfile.
+In UserController created a method createUserProfile and add logic to it.
+Added Create User link into basic.blade.php.
+Create view createUserProfile.blade.php.
+Added Route users.storeUserProfile.
+In UserController created a method storeUserProfile and add logic to it.
+Do manual test, all work))

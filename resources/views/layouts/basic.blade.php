@@ -37,9 +37,14 @@
                 @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin')
                     <a href="{{ route('articles.trashed') }}">Удаленные статьи</a>
                     <a href="{{ route('users.allProfiles') }}">Все профили</a>
+                    <a href="{{ route('users.createUserProfile') }}">Создать профиль</a>
                 @endif
 
                 <a href="{{ route('users.myProfile') }}">Мой профиль</a>
+
+                @if(Auth::user()->role == 'root' or Auth::user()->role == 'admin')
+                    <a href="{{ route('users.trashedUsersProfiles') }}">Удаленные профили</a>
+                @endif
 
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
