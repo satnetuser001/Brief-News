@@ -365,3 +365,36 @@ In UserController created a method trashedUsersProfiles and add logic to it.
 Edited view allUsersProfiles.blade.php into showUsersProfiles to show deleted and active users.
 Added Route users.restoreUserProfile.
 In UserController created a method restoreUserProfile and add logic to it.
+
+15.08.23
+root profile can edit only root:
+
+I tried to solve this problem by creating custom middleware EditingRoot.
+Didn't work out. Because it is impossible to pass the model to the middleware before the method of Controller is called, it is impossible to provide the required level of protection to the root profile.
+
+Here is the code of middleware:
+	public function handle(Request $request, Closure $next): Response
+    {
+        if (
+            $request->user() != NULL and
+            (
+                $request->role != 'root'
+                or
+                $request->role == 'root' and
+                $request->user()->role == 'root'
+            )
+        ) {
+            return $next($request);
+        }
+        else{
+            return redirect()->route('home');
+        }  
+    }
+
+Need middleware to change into a policy.
+
+17.08.23
+Created a UserPolicy.
+Registering the policy in AuthServiceProvider.
+Added logic to policy.
+In the controller, the policy applied to the required methods.

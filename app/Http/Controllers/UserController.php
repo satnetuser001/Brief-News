@@ -24,7 +24,8 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('isAdmin')->except(['myProfile', 'updateMyProfile', 'editPassword', 'updatePassword']);
-        //$this->middleware('isNotRoot')->only('editUserProfile', 'editUserProfile', ...); //it's need to do
+        $this->middleware('can:isRootEdited,user')->only(['updateMyProfile', 'updatePassword', 'editUserProfile', 'updateUserProfile']);
+        $this->middleware('can:isRootDeleted,user')->only(['destroyConfirm', 'destroy']);
     }
 
     /**
@@ -211,6 +212,8 @@ class UserController extends Controller
             $objUser->fill(['status' => 'active']);
         }
 
+        //root hack?
+
         $objUser->save();
         return redirect()->route('users.allProfiles');
     }
@@ -266,7 +269,7 @@ class UserController extends Controller
 
         //'set root role' selector hack protection
         if ($validated['role'] == 'root' and $user->role != 'root') {
-            return response('we will arrest you!!!');
+            return response('You are a hacker and the police will arrest you!!!');
             //Of course, it is for fun. Here need to throw an exception. It will be done in the future.
         }
 
@@ -289,8 +292,8 @@ class UserController extends Controller
         if ($request->editPassword == true) {
             $user->fill(['password' => Hash::make($validated['newPassword'])]);
         }
-            //newly appointed admin can have only active status
-        if ($validated['role'] == "admin") {
+            //newly appointed admin can have only active status, root can't change the status
+        if ($validated['role'] == "admin" or $validated['role'] == "root") {
             $user->fill(['status' => 'active']);
         }
 

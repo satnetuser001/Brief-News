@@ -8,14 +8,6 @@ use App\Models\Article;
 class ArticlePolicy
 {
     /**
-     * Create a new policy instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Does the user have a writer role.
      * return bool
      */
