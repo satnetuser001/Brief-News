@@ -45,7 +45,7 @@ Route::get('/users/createUserProfile', [UserController::class, 'createUserProfil
 Route::post('/users/storeUserProfile', [UserController::class, 'storeUserProfile'])->name('users.storeUserProfile');
 Route::get('/users/{user}/editUserProfile', [UserController::class, 'editUserProfile'])->name('users.editUserProfile');
 Route::patch('/users/{user}/updateUserProfile', [UserController::class, 'updateUserProfile'])->name('users.updateUserProfile');
-Route::get('/users/{user}/destroyConfirm', [UserController::class, 'destroyConfirm'])->name('users.destroyConfirm');
-Route::delete('/users/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/users/{user}/destroyUserProfileConfirm', [UserController::class, 'destroyUserProfileConfirm'])->name('users.destroyUserProfileConfirm');
+Route::delete('/users/{user}/destroyUserProfile', [UserController::class, 'destroyUserProfile'])->name('users.destroyUserProfile');
 Route::get('/users/trashedUsersProfiles', [UserController::class, 'trashedUsersProfiles'])->name('users.trashedUsersProfiles');
 Route::patch('/users/{id}/restoreUserProfile', [UserController::class, 'restoreUserProfile'])->name('users.restoreUserProfile');

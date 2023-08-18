@@ -398,3 +398,6 @@ Created a UserPolicy.
 Registering the policy in AuthServiceProvider.
 Added logic to policy.
 In the controller, the policy applied to the required methods.
+
+18.08.23
+Added small changes in route naming.

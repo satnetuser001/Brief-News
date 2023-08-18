@@ -39,7 +39,7 @@
 		Создан: {{ $context->created_at }}
 	</div>
 
-	<form action="{{ route('users.destroy', [$context->id]) }}" method="POST">
+	<form action="{{ route('users.destroyUserProfile', [$context->id]) }}" method="POST">
 		@csrf
 		@method('DELETE')
 		<input type="submit" value="Удалить">

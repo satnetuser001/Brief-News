@@ -23,8 +23,16 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin')->except(['myProfile', 'updateMyProfile', 'editPassword', 'updatePassword']);
-        $this->middleware('can:isRootEdited,user')->only(['updateMyProfile', 'updatePassword', 'editUserProfile', 'updateUserProfile']);
+        $this->middleware('isAdmin')->except(['myProfile',
+                                              'updateMyProfile',
+                                              'editPassword',
+                                              'updatePassword'
+                                            ]);
+        $this->middleware('can:isRootEdited,user')->only(['updateMyProfile',
+                                                          'updatePassword',
+                                                          'editUserProfile',
+                                                          'updateUserProfile'
+                                                        ]);
         $this->middleware('can:isRootDeleted,user')->only(['destroyConfirm', 'destroy']);
     }
 
@@ -304,23 +312,23 @@ class UserController extends Controller
     /**
      * User deletion confirmation.
      */
-    public function destroyConfirm(User $user)
+    public function destroyUserProfileConfirm(User $user)
     {
-        return view('users.destroy', ['context' => $user]);
+        return view('users.destroyUserProfileConfirm', ['context' => $user]);
     }
 
     /**
      * Soft delete User in DB.
      */
-    public function destroy(User $user)
+    public function destroyUserProfile(User $user)
     {
-        //return response('UserController, destroy');
         $user->delete();
+
         return redirect()->route('users.allProfiles');
     }
 
     /**
-     * Show trashed users.
+     * Show trashed Users.
      */
     public function trashedUsersProfiles()
     {
@@ -330,7 +338,7 @@ class UserController extends Controller
     }
 
     /**
-     * Restore trashed user.
+     * Restore trashed User.
      */
     public function restoreUserProfile($id)
     {

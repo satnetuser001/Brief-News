@@ -26,6 +26,19 @@ class ArticlePolicy
     }
 
     /**
+     * Is the user banned?
+     * return bool
+     */
+    protected function isBanned(User $user)
+    {
+        if ($user->status == 'active') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Admin can do anything.
      * return bool
      */
@@ -48,7 +61,7 @@ class ArticlePolicy
      * return bool
      */
     public function create($user){
-        return $this->isWriter($user);
+        return $this->isWriter($user) and $this->isBanned($user);
     }
 
     /**
@@ -56,6 +69,6 @@ class ArticlePolicy
      * return bool
      */
     public function update($user, $article){
-        return $this->isOwner($user, $article);
+        return $this->isOwner($user, $article) and $this->isBanned($user);
     }
 }
