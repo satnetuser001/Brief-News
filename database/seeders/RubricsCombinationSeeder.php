@@ -21,14 +21,14 @@ class RubricsCombinationSeeder extends Seeder
             $binStr = sprintf("%0" . $columnsCount . "b",   $dec);
             $arr = str_split($binStr);
             RubricsCombination::create([
-                'policy' => $arr[0],
+                'policy' => $arr[0], //column 1
                 'economy' => $arr[1],
                 'science' => $arr[2],
                 'technologies' => $arr[3],
                 'sport' => $arr[4],
                 'other' => $arr[5],
                 'world' => $arr[6],
-                'local' => $arr[7],
+                'local' => $arr[7], //column 8
             ]);
             $dec ++;
         }
