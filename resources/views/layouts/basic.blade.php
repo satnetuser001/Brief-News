@@ -4,28 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}::@yield('title')</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
 </head>
 <body>
 
     <header>
-        <section>
-            <h1>Brief News</h1>
-        </section>
-        <section>
-            <!-- user data -->
+        <!-- logo -->
+        @include('includes.logo')
+    
+        <!-- user greeting -->
+        <div>
+            Добро пожаловать, 
+            <b>
+                @guest
+                    гость
+                @endguest
+
+                @auth
+                    @if (Auth::user()->name)
+                        {{ Auth::user()->name }}
+                    @else
+                        инкогнито
+                    @endif
+                @endauth
+
+                !
+            </b><br>
+        </div>
+
+        <!-- auth user role -->
+        <div>
             @auth
-                @if (Auth::check() and Auth::user()->name)
-                    Ваше имя <b>{{ Auth::user()->name }}</b><br>
-                @endif   
-
-                Ваши права <b>{{ Auth::user()->role }}</b><br>
+                Ваша роль: <b>{{ Auth::user()->role }}</b><br>
             @endauth
-
-            @guest
-                гость<br>
-            @endguest
-
-            <!-- User interface buttons -->
+        </div>
+    
+        <!-- user interface buttons -->
+        <div>
             <a href="{{ route('home') }}">Главная</a>
 
             @auth
@@ -61,18 +76,22 @@
                     <a href="{{ route('register') }}">Регистрация</a>
                 @endif
             @endguest
-        </section>
-        <hr>
+        </div>
     </header>
+
+    <hr>
 
     <main>
         @yield('content')
     </main>
 
+    {{--
+    <hr>
+
     <footer>
-        <hr>
         <b>Footer:</b> Отсутствует на всех страницах :)
     </footer>
+    --}}
 
 </body>
 </html>

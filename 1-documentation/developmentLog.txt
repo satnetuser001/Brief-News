@@ -406,3 +406,11 @@ In ArticlePolicy added: banned writer can't create and edit the articles.
 Fixed a bug: new user don't create. Added default value 256 to 'rubrics_combination_id' in table user.
 
 THE BACKEND IS OVER!!!
+
+21.08.23
+Front.
+Create file with style public/styles/main.css.
+Connected the CSS file in the basic.blade.php.
+Added background color for web application.
+Pages login and register now inherited from bacic.blade.php.
+Deleted source styles on these pages.
