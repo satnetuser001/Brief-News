@@ -414,3 +414,18 @@ Connected the CSS file in the basic.blade.php.
 Added background color for web application.
 Pages login and register now inherited from bacic.blade.php.
 Deleted source styles on these pages.
+
+25.08.23
+The GRID for the page layout has been selected.
+Learning GRID.
+
+28.08.23
+Usually the day is spent studying front-end materials and testing different options.
+So a usually message would look like this: Learning and testing GRID.
+
+29.08.23
+Learning and testing GRID and some Flexbox.
+
+30.08.23
+Learning and testing GRID.
+Created CSS styles for the header.

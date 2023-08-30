@@ -1,3 +1,3 @@
-<div>
-    <h1>Brief News</h1>
+<div class="logo">
+    Brief News
 </div>

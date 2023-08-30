@@ -33,7 +33,7 @@ class UserController extends Controller
                                                           'editUserProfile',
                                                           'updateUserProfile'
                                                         ]);
-        $this->middleware('can:isRootDeleted,user')->only(['destroyConfirm', 'destroy']);
+        $this->middleware('can:isRootDeleted,user')->only(['destroyUserProfileConfirm', 'destroyUserProfile']);
     }
 
     /**
