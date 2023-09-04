@@ -429,3 +429,12 @@ Learning and testing GRID and some Flexbox.
 30.08.23
 Learning and testing GRID.
 Created CSS styles for the header.
+
+31.08.23
+Learning and testing GRID and some Flexbox.
+
+01.09.23
+Added GRID to showArticles page.
+
+04.09.23
+Created CSS styles to rubrics and local panel.

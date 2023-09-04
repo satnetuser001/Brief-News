@@ -11,7 +11,7 @@
     <header>
         <!-- logo -->
         @include('includes.logo')
-        <div class="userGreeting">
+        <div class="userGreetingSection">
             <div class="emptyBlock">
                 <!-- empty block -->
             </div>
@@ -33,7 +33,7 @@
                         @endauth
 
                         !
-                    </b><br>
+                    </b>
                 </div>
 
                 <!-- auth user role -->
@@ -45,7 +45,7 @@
             </div>
         </div>
         <!-- user interface buttons -->
-        <div class="userButtons">
+        <div class="buttonsSection">
             <a href="{{ route('home') }}" class="button">Главная</a>
 
             @auth
@@ -68,7 +68,7 @@
 
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <input type="submit" class="button exitButton" value="Выход">
+                    <input type="submit" class="button htmlButtonStyleCorrection exitButton" value="Выход">
                 </form>
             @endauth
 
@@ -89,8 +89,6 @@
     </main>
 
     {{--
-    <hr>
-
     <footer>
         <b>Footer:</b> Отсутствует на всех страницах :)
     </footer>

@@ -1,1 +1,1 @@
-Brief News is a website on Laravel 10.13.0
+Brief News is a web application on Laravel 10.13.0
