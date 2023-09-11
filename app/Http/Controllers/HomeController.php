@@ -37,7 +37,6 @@ class HomeController extends Controller
             'pageName' => 'Главная',
             'rubricsCombination' => [],
             'articles' => [],
-            'debugging' => [],
         ];
 
         //repeated request auth or guest
@@ -58,12 +57,6 @@ class HomeController extends Controller
                                         paginate($this->articlesPerPage)->
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
-            }
-            
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'home, repeated request'];
-                $context['debugging'] += ['pressed' => $request->input()['pressed']];
             }
         }
 
@@ -87,11 +80,6 @@ class HomeController extends Controller
                                         appends($arrRubricsCombination);
                 $context['articles'] = $objsArticles;
             }
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'home, auth first request'];
-            }
         }
 
         //guest first request
@@ -107,11 +95,6 @@ class HomeController extends Controller
                                     paginate($this->articlesPerPage)->
                                     appends($arrRubricsCombination);
             $context['articles'] = $objsArticles;
-
-            //debugging
-            if ($this->debuggingStatus) {
-                $context['debugging'] += ['in if' => 'home, guest first request'];
-            }
         }    
 
         return view('showArticles', ['context' => $context]);

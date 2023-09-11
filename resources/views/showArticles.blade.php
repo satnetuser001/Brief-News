@@ -8,7 +8,7 @@
 @endif
 
 @section('content')
-    <div class="showArticles">
+    <div class="showArticlesPage">
         <!-- Name Page in case -->
         <div class="namePage">
             <b>
@@ -23,77 +23,120 @@
         <!-- Panel for sorting articles by rubrics and locale -->
         @include('includes.rubricsAndLocalePanel')
 
-        <!-- News -->
+        <!-- articles section -->
         @if(array_key_exists('articles', $context) and $context['articles'] != NULL)
-            <!-- articles -->
             <div class="articles">
                 @foreach ($context['articles'] as $article)
-                    <details>
-                        <summary>
-                            <b>{{ $article->header }}</b>
-                        </summary>
+                    <div class="article">
 
-                        <article>
-                            {{ $article->body }}
-                        </article>
-                        <!-- author -->
-                        <address>
-                            {{ $article->user->nickname }}
-                        </address>
-                        <!-- links -->
-                        @foreach ($article->links as $objLink)
-                            <div>
-                                <a href="{{ $objLink->link }}">{{ $objLink->link }}</a>
+                        <!-- article header -->
+                        <input type="checkbox" class="toggleInput" id="toggleBody{{ $loop->index }}">
+                        <label for="toggleBody{{ $loop->index }}" class="articleHeader">
+                            <div class="articleCreationDate">{{ $article->created_at }}</div>
+                            <div class="articleName">
+                                <b>{{ $article->header }}</b>
                             </div>
-                        @endforeach
-                    </details>
+                        </label>
+                        
+                        <!-- article body -->
+                        <div class="articleBody">
+                            <article>{{ $article->body }}</article>
 
-                    <!-- edit article button -->
-                    @if(
-                        $article['deleted_at'] == NULL and
-                        Auth::check() and 
-                        (
-                            Auth::user()->id == $article->user_id or
-                            Auth::user()->role == "root" or
-                            Auth::user()->role == "admin"
-                        )
-                    )
-                        <div>
-                            <a href="{{ route('articles.edit', [$article->id]) }}">Редактировать</a>
+                            <!-- links -->
+                            @if($article->links->isNotEmpty())
+                                <div>
+                                    <br>
+                                    <b>Ссылки на источники:</b>
+                                    @foreach ($article->links as $objLink)
+                                        <div>
+                                            <a href="{{ $objLink->link }}">{{ $objLink->link }}</a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
-                    @endif
 
-                    <!-- delete article button -->
-                    @if(
-                        $article['deleted_at'] == NULL and
-                        Auth::check() and 
-                        (
-                            Auth::user()->role == "root" or
-                            Auth::user()->role == "admin"
-                        )
-                    )
-                        <div>
-                            <a href="{{ route('articles.destroyConfirm', [$article->id]) }}">Удалить</a>
+                        <!-- article footer -->
+                        <div class="articleFooter">
+
+                            <!-- article functional buttons -->
+                            <div class="functionalButtons">
+
+                                <!-- edit -->
+                                @if(
+                                    $article['deleted_at'] == NULL and
+                                    Auth::check() and 
+                                    (
+                                        Auth::user()->id == $article->user_id or
+                                        Auth::user()->role == "root" or
+                                        Auth::user()->role == "admin"
+                                    )
+                                )
+                                    <div>
+                                        <a
+                                            href="{{ route('articles.edit', [$article->id]) }}"
+                                            class="button" 
+                                        >
+                                            Редактировать
+                                        </a>
+                                    </div>
+                                @endif
+
+                            
+                                <!-- delete -->
+                                @if(
+                                    $article['deleted_at'] == NULL and
+                                    Auth::check() and 
+                                    (
+                                        Auth::user()->role == "root" or
+                                        Auth::user()->role == "admin"
+                                    )
+                                )
+                                    <div>
+                                        <a
+                                            href="{{ route('articles.destroyConfirm', [$article->id]) }}"
+                                            class="button" 
+                                        >
+                                            Удалить
+                                        </a>
+                                    </div>
+                                @endif
+
+                                <!-- restore -->
+                                @if($article['deleted_at'] != NULL)
+                                    <form action="{{ route('articles.restore', [$article->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input
+                                            type="submit"
+                                            class="button htmlButtonStyleCorrection"
+                                            value="Восстановить статью"
+                                        >
+                                    </form>
+                                @endif
+                            </div>
+
+                            <!-- article visualization buttons -->
+                            <div class="visualizationButtons">
+
+                                <!-- hide -->
+                                <label
+                                    for="toggleBody{{ $loop->index }}"
+                                    class="hideArticleButton button pointer"
+                                >
+                                    Свернуть
+                                </label>
+                            </div>
                         </div>
-                    @endif
-
-                    <!-- restore article button -->
-                    @if($article['deleted_at'] != NULL)
-                        <form action="{{ route('articles.restore', [$article->id]) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                            <input type="submit" value="Восстановить статью">
-                        </form>
-                    @endif
+                    </div>
                 @endforeach
             </div>
-
-            <!-- paginator -->
-            <!-- need to add "if" to check if paginator method exists in object -->
-            <div class="paginator">
-                {{ $context['articles']->links() }}
-            </div>
-
         @endif
+
+        <!-- paginator -->
+        <!-- need to add "if" to check if paginator method exists in object -->
+        <div class="paginator">
+            {{ $context['articles']->links() }}
+        </div>
     </div>
 @endsection

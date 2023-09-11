@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+    {{--
 	<form action="{{ route('users.updateUserProfile', '1') }}" method="POST">
 
         @csrf
@@ -105,6 +105,7 @@
         <!-- save -->
         <input type="submit" value="Сохранить">
     </form>
+    --}}
 
 
 <h3>Context Display</h3>

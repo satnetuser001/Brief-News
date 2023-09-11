@@ -438,3 +438,22 @@ Added GRID to showArticles page.
 
 04.09.23
 Created CSS styles to rubrics and local panel.
+
+05.09.23
+Creating a style for the article “container” on the page.
+
+06.09.23
+Creating a style for the article “container” on the page.
+
+07.09.23
+Creating a style for the article “container” on the page.
+
+08.09.23
+Creating a style for the article “container” on the page.
+
+11.09.23
+The article “container” style has been created:
+	hiding the article body is done using CSS styles - showing and hiding an article is done by clicking on the title, a hide button has been added at the end of the article;
+	added article creation date;
+	added styles to the edit, delete, restore article buttons;
+	added the line “links to sources” to the body of the article and logic that hides it in the absence of links.

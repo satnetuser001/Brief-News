@@ -1,7 +1,6 @@
 /*for deleting, it's for better visibility*/
 /*
 	header{
-
 	}
 	.logo{
 		background: LightBlue;
@@ -12,10 +11,8 @@
 	.buttonsSection{
 		background: PaleTurquoise;
 	}
-	main{
-		
+	main{	
 	}
-
 	.namePage{
 		background: Thistle;
 	}
@@ -28,6 +25,18 @@
 	.paginator{
 		background: LightYellow;
 	}
+	.articleCreationDate{
+		background: LightBlue;
+	}
+	.articleName{
+		background: Pink;
+	}
+	.functionalButtons{
+		background: LightYellow;
+	}
+	.visualizationButtons{
+		background: Thistle;
+	}
 */
 /*----------------------------------------*/
 
@@ -36,7 +45,7 @@ body{
 	display: grid;
 	grid-template-columns: 1400px;
 	grid-template-rows: 180px 1fr;
-	grid-row-gap: 8px;
+	grid-row-gap: 10px;
 	justify-content: center;
 }
 
@@ -47,11 +56,15 @@ header{
 	grid-template-rows: 3fr 2fr 1fr;
 	padding: 10px;
 }
+
+/*Logo*/
 .logo{
 	font-size: 70px;
 	font-weight: 600;
 	margin-left: 8px;
 }
+
+/*User greeting section*/
 .userGreetingSection{
 	display: grid;
 	grid-template-columns: 2fr 1fr;
@@ -61,6 +74,8 @@ header{
 	margin-left: 8px;
 	align-content: center;
 }
+
+/*Buttons*/
 .buttonsSection{
 	display: inline-flex;
 	justify-content: right;
@@ -85,6 +100,9 @@ header{
     height: 29px;
     cursor: pointer;
 }
+.pointer{
+	cursor: pointer;
+}
 .exitButton{
     background-color: MistyRose;
 }
@@ -97,28 +115,85 @@ header{
 	color: White;
 }
 
+/*Main section page*/
 main{
 	background: LightGray;
 	padding: 10px;
 }
-.showArticles{
+
+/*Show Articles Page*/
+.showArticlesPage{
 	display: grid;
-	grid-template-rows: 38px 40px 1fr 100px;
+	grid-template-rows: 30px 30px 1fr 100px;
+	gap: 10px;
 }
+/*30px*/
 .namePage{
 	display: grid;
 	align-content: center;
 	margin-left: 8px;
 	font-size: 30px;
 }
+/*30px*/
 .rubricsAndLocalePanel{
 	display: inline-flex;
 	justify-content: right;
 	align-items: center;
 }
+/*1fr*/
 .articles{
-
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
-.paginator{
+.article{
+	background: Silver;
+	padding: 0px 8px 0px 8px;
+}
+.toggleInput {
+    display: none;
+}
+.articleHeader{
+	display: grid;
+	grid-template-columns: 1fr 8fr;
+	cursor: pointer;
+}
+.articleCreationDate{
+	margin-top: 6px;
+}
+.articleName {
+	display: flex;
+	font-size: 25px;
+}
+.articleFooter{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	padding: 4px 0px;
+}
+.functionalButtons{
+	display: inline-flex;
+	column-gap: 7px;
+}
+.visualizationButtons{
+	display: inline-flex;
+	justify-content: right;
+}
+/*hide logic*/
+.articleBody {
+	display: none; /* Hide the body by default */
+	background: White;
+	padding: 10px;
+}
+.hideArticleButton{
+	display: none;
+}
+.toggleInput:checked ~ .articleBody {
+	display: block;
+}
+.toggleInput:checked ~ .articleFooter > .visualizationButtons > .hideArticleButton {
+	display: grid;
+}
 
+/*100px Paginator*/
+.paginator{
 }
