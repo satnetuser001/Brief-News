@@ -16,22 +16,23 @@ class UserArticleLinkSeeder extends Seeder
     public function run(): void
     {
         /*settings*/
-        $writersCount = 10;
+        $writersCount = 15;
         $articleCount = 10;
         $delay = 1; //time between article creation (int.sec.)
-        $wordsCount = 1000; //in the article
+        $wordsCount = 500; //in the article
+        $wordsInLine = 15;
         $linksCount = 5;
 
         /*writer*/
         for ($i=1; $i <= $writersCount; $i++) {            
             $objWriter = User::create([
-                'name' => 'writerName_' . $i,
-                'surname' => 'writerSurname_' . $i,
-                'nickname' => 'writerNickname_' . $i,
+                'name' => 'writerName' . $i,
+                'surname' => 'writerSurname' . $i,
+                'nickname' => 'writerNickname' . $i,
                 'role' => 'writer',
                 'status' => 'active',
                 'rubrics_combination_id' => rand(1, 256),
-                'email' => 'writer_' . $i . '@gmail.com',
+                'email' => 'writer' . $i . '@gmail.com',
                 'password' => Hash::make(1077),
             ]);
 
@@ -39,9 +40,12 @@ class UserArticleLinkSeeder extends Seeder
             for ($j=1; $j <= $articleCount; $j++) {
 
                 //form body text
-                $body = 'This is the test body of the article, then the random text is displayed: <br> ';
-                for ($w=0; $w < $wordsCount; $w++) { 
-                    $body .= Str::random(rand(5, 10)) . ' ';
+                $body = "This is the test body of the article, then the random text is displayed:";
+                for ($w=0; $w < $wordsCount; $w++) {
+                    if ($w % $wordsInLine == 0) {
+                        $body .="\n";
+                    }
+                    $body .= Str::random(rand(5, 10)) . " ";
                 }
 
                 $objArticle = $objWriter->articles()->create([
@@ -53,7 +57,7 @@ class UserArticleLinkSeeder extends Seeder
                 /*link*/
                 for ($k=1; $k <= $linksCount; $k++) {                    
                     $objArticle->links()->create([
-                        'link' => 'This_is_link_N_' . $k . '.com.ua',
+                        'link' => 'https://This_is_link_N_' . $k . '.com.ua',
                     ]);
                 }
 

@@ -457,3 +457,9 @@ The article “container” style has been created:
 	added article creation date;
 	added styles to the edit, delete, restore article buttons;
 	added the line “links to sources” to the body of the article and logic that hides it in the absence of links.
+
+12.09.23
+Added article style.
+Added author to article.
+Added small changes to seeders.
+Regenerated the database.

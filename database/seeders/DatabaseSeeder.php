@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
 
             //create test authors, articles, and links
             UserArticleLinkSeeder::class,
+
+            //creates a reader user
+            UserReaderSeeder::class,
         ]);
     }
 }

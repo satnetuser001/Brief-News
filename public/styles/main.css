@@ -124,7 +124,7 @@ main{
 /*Show Articles Page*/
 .showArticlesPage{
 	display: grid;
-	grid-template-rows: 30px 30px 1fr 100px;
+	grid-template-rows: 30px 30px 1fr max-content;
 	gap: 10px;
 }
 /*30px*/
@@ -164,6 +164,9 @@ main{
 .articleName {
 	display: flex;
 	font-size: 25px;
+}
+.articleBody{
+	font-size: 18px;
 }
 .articleFooter{
 	display: grid;

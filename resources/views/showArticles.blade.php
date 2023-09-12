@@ -40,7 +40,9 @@
                         
                         <!-- article body -->
                         <div class="articleBody">
-                            <article>{{ $article->body }}</article>
+
+                            <!-- e - escape any HTML entities; nl2br - convert line breaks to <br> -->
+                            <article>{!! nl2br(e($article->body)) !!}</article>
 
                             <!-- links -->
                             @if($article->links->isNotEmpty())
@@ -54,6 +56,25 @@
                                     @endforeach
                                 </div>
                             @endif
+
+                            <!-- author -->
+                            <div>
+                                <br>
+                                <b>Автор:</b>
+                                <div>
+                                    @if(
+                                        Auth::check() and 
+                                        (
+                                            Auth::user()->role == "root" or
+                                            Auth::user()->role == "admin"
+                                        )
+                                    )
+                                        <a href="{{ route('users.editUserProfile', [$article->user->id]) }}">{{ $article->user->nickname }}</a>
+                                    @else
+                                        {{ $article->user->nickname }}
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
                         <!-- article footer -->
