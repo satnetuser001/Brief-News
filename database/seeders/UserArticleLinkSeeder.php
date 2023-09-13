@@ -16,8 +16,8 @@ class UserArticleLinkSeeder extends Seeder
     public function run(): void
     {
         /*settings*/
-        $writersCount = 15;
-        $articleCount = 10;
+        $writersCount = 200;
+        $articleCount = 5;
         $delay = 1; //time between article creation (int.sec.)
         $wordsCount = 500; //in the article
         $wordsInLine = 15;

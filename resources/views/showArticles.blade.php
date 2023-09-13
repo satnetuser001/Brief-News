@@ -154,10 +154,7 @@
             </div>
         @endif
 
-        <!-- paginator -->
-        <!-- need to add "if" to check if paginator method exists in object -->
-        <div class="paginator">
-            {{ $context['articles']->links() }}
-        </div>
+        <!-- pagination -->
+        {{ $context['articles']->links() }}
     </div>
 @endsection

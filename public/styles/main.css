@@ -181,7 +181,7 @@ main{
 	display: inline-flex;
 	justify-content: right;
 }
-/*hide logic*/
+/*hiding logic*/
 .articleBody {
 	display: none; /* Hide the body by default */
 	background: White;
@@ -197,6 +197,27 @@ main{
 	display: grid;
 }
 
-/*100px Paginator*/
-.paginator{
+/*max-content Pagination*/
+.pagination{
+	display: inline-flex;
+	/*background: Silver;*/
+	justify-content: center;
+	align-items: center;
+	column-gap: 7px;
+}
+.paginationElement{
+	display: flex;
+    align-items: center;
+	text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 7px;
+    height: 26px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.paginationElementPressed{
+	background: Silver;
+	color: White;
 }
