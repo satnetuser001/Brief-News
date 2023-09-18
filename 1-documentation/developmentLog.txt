@@ -467,3 +467,9 @@ Regenerated the database.
 13.09.23
 Regenerated the database, more articles were needed for the pagination test.
 Added pagination style.
+
+15.09.23
+Started creating styles for the page "Create Article".
+
+18.09.23
+Added styles for the page "Create Article".

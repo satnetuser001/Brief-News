@@ -1,45 +1,3 @@
-/*for deleting, it's for better visibility*/
-/*
-	header{
-	}
-	.logo{
-		background: LightBlue;
-	}
-	.userGreetingSection{
-		background: LightSkyBlue;
-	}
-	.buttonsSection{
-		background: PaleTurquoise;
-	}
-	main{	
-	}
-	.namePage{
-		background: Thistle;
-	}
-	.rubricsAndLocalePanel{
-		background: LightBlue;
-	}
-	.articles{
-		background: LightGreen
-	}
-	.paginator{
-		background: LightYellow;
-	}
-	.articleCreationDate{
-		background: LightBlue;
-	}
-	.articleName{
-		background: Pink;
-	}
-	.functionalButtons{
-		background: LightYellow;
-	}
-	.visualizationButtons{
-		background: Thistle;
-	}
-*/
-/*----------------------------------------*/
-
 body{
 	background: DarkGray;
 	display: grid;
@@ -200,7 +158,6 @@ main{
 /*max-content Pagination*/
 .pagination{
 	display: inline-flex;
-	/*background: Silver;*/
 	justify-content: center;
 	align-items: center;
 	column-gap: 7px;
@@ -220,4 +177,79 @@ main{
 .paginationElementPressed{
 	background: Silver;
 	color: White;
+}
+
+/*Create Article Page*/
+.createArticlePage{
+	display: grid;
+	grid-template-rows: 30px max-content max-content;
+	gap: 10px;
+}
+/*30px*/
+.namePage{
+	/*from Show Articles Page*/
+}
+/*max-content*/
+#createArticleForm{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 18px;
+}
+.rubricsAndLocaleSelectionSection{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: Silver;
+	padding: 8px;
+}
+.rubricsAndLocale{
+	display: flex;
+	gap: 10px;
+}
+.rubric, .locale{
+	display: flex;
+	gap: 2px;
+}
+#createArticleForm > .header{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: Silver;
+	padding: 8px;
+}
+.articleHeaderInput{
+	font-size: 18px;
+}
+#createArticleForm > .body{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: Silver;
+	padding: 8px;
+}
+.articleBodyInput{
+	resize: none;
+	font-size: 18px;
+	height: 450px;
+}
+#createArticleForm > .sourcesLinks{
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	background: Silver;
+	padding: 8px;
+}
+.errorMessage{
+	display: flex;
+	color: FireBrick;
+	gap: 10px;
+}
+/*max-content(second)*/
+.saveCancel{
+	display: flex;
+	/*justify-content: right;*/
+	gap: 4px;
+	background: Silver;
+	padding: 8px;
 }
