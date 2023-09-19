@@ -476,3 +476,4 @@ Added styles for the page "Create Article".
 
 19.09.23
 Added styles for the page "Edit Article".
+Added styles for the page "Delete Article".

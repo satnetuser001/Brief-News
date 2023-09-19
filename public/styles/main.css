@@ -252,3 +252,11 @@ main{
 	gap: 4px;
 	padding: 8px;
 }
+
+/*Delete Article Page*/
+.deleteArticleHeader{
+	display: grid;
+	grid-template-columns: 1fr 8fr;
+	background: Silver;
+	padding: 4px;
+}
