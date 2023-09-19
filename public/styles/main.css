@@ -179,7 +179,7 @@ main{
 	color: White;
 }
 
-/*Create Article Page*/
+/*Create Article Page and Edit Article Page*/
 .createArticlePage{
 	display: grid;
 	grid-template-rows: 30px max-content max-content;
@@ -231,7 +231,7 @@ main{
 .articleBodyInput{
 	resize: none;
 	font-size: 18px;
-	height: 450px;
+	height: 250px;
 }
 #createArticleForm > .sourcesLinks{
 	display: flex;
@@ -248,8 +248,7 @@ main{
 /*max-content(second)*/
 .saveCancel{
 	display: flex;
-	/*justify-content: right;*/
+	justify-content: right;
 	gap: 4px;
-	background: Silver;
 	padding: 8px;
 }

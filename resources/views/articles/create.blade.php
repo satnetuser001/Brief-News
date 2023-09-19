@@ -106,10 +106,10 @@
 			</div>
 			<div class="errorMessage">
 				@error('arrRubricsCombination')
-					<span ><strong>{{ $message }}</strong></span>
+					<span><strong>{{ $message }}</strong></span>
 				@enderror
 				@error('arrLocaleCombination')
-					<span ><strong>{{ $message }}</strong></span>
+					<span><strong>{{ $message }}</strong></span>
 				@enderror
 			</div>
 		</div>
