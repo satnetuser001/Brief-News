@@ -260,3 +260,51 @@ main{
 	background: Silver;
 	padding: 4px;
 }
+
+/*Show User Profiles*/
+.showUserProfiles{
+	display: grid;
+	grid-template-rows: 30px max-content max-content;
+	gap: 10px;
+}
+/*30px
+.namePage{}*/
+
+/*max-content*/
+.usersTable{
+	background: Silver;
+	font-size: 18px;
+	padding: 4px;
+	width: 100%;
+}
+.buttonInTable{
+	display: grid;
+	width: 143px;
+	height: 20px;
+	text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 7px;
+    justify-content: center;
+    align-content: center;
+}
+.restoreButtonInTableCorrection{
+	height: 25px;
+	font: inherit;
+}
+
+.usersTable > tbody > tr > td{
+	height: 32px;
+	text-align: center;
+}
+td > a, td > form > input {
+	margin-left: auto;
+    margin-right: auto;
+}
+.oddRow{
+	background: LightGray;
+}
+
+/*max-content(second)
+.pagination{}*/
