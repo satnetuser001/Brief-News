@@ -1,65 +1,51 @@
 @extends('layouts.basic')
 
 @section('content')
-<div>
-    <b>Вход на сайт</b>
-</div>
+<div class="loginPage">
 
-<div>
-    <form method="POST" action="{{ route('login') }}">
+    <div class="namePage">
+        <b>Вход на сайт</b>
+    </div>
+
+    <form id="loginForm" method="POST" action="{{ route('login') }}" class="loginForm">
         @csrf
 
-        <div>
+        <div class="loginInputSection">
             <label>Введите Ваш Email</label>
-
             <div>
-                <input type="email" name="email" value="{{ old('email') }}" autofocus>
-
-                @error('email')
-                    <span>
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input
+                    type="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    autofocus
+                    class="loginInput"
+                >
+                <div class="errorMessage">
+                    @error('email')
+                        <span><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
             </div>
         </div>
 
-        <div>
+        <div class="loginInputSection">
             <label for="password">Введите Ваш пароль</label>
-
             <div>
-                <input type="password" name="password">
-
-                @error('password')
-                    <span>
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <input type="password" name="password" class="loginInput">
+                <div class="errorMessage">
+                    @error('password')
+                        <span><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div> 
             </div>
         </div>
 
-        {{--
-        <!-- to do -->
-        <div>
-            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-            <label>Запомнить меня</label>
-        </div>
-        --}}
-
-        <div>
-            <button type="submit">
-                Войти
-            </button>
-
-            {{--
-            <!-- to do -->
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
-            @endif
-            --}}
-
-        </div>
     </form>
+
+    <button
+        form="loginForm"
+        type="submit"
+        class="button restoreButtonInTableCorrection loginButton"
+    >Войти</button>
 </div>
 @endsection

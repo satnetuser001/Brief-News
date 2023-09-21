@@ -308,3 +308,41 @@ td > a, td > form > input {
 
 /*max-content(second)
 .pagination{}*/
+
+/*login and register*/
+.loginPage{
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.loginForm{
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	background: Silver;
+	gap: 20px;
+	font-size: 20px;
+	padding: 20px;
+}
+.loginInputSection{
+	display: inline-flex;
+	gap: 30px;
+	justify-content: space-between;
+}
+.loginInput{
+	font-size: 18px;
+	width: 250px;
+	height: 20px;
+}
+.loginButton{
+	display: flex;
+	align-self: end;
+	margin-right: 32%;
+	margin-bottom: 20px;
+}
+.registerButton{
+	display: flex;
+	align-self: end;
+	margin-right: 34%;
+	margin-bottom: 20px;
+}
