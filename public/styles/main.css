@@ -337,12 +337,16 @@ td > a, td > form > input {
 .loginButton{
 	display: flex;
 	align-self: end;
+	align-items: center;
 	margin-right: 32%;
 	margin-bottom: 20px;
+	height: 29px;
 }
 .registerButton{
 	display: flex;
 	align-self: end;
+	align-items: center;
 	margin-right: 34%;
 	margin-bottom: 20px;
+	height: 29px;
 }

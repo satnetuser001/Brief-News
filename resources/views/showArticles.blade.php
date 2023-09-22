@@ -131,7 +131,7 @@
                                         <input
                                             type="submit"
                                             class="button htmlButtonStyleCorrection"
-                                            value="Восстановить статью"
+                                            value="Восстановить"
                                         >
                                     </form>
                                 @endif
