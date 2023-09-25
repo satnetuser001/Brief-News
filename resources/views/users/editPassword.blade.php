@@ -21,12 +21,12 @@
         @method('PATCH')
 
         <!-- enter old password -->
-        <div class="editPasswordValueSection">
-            <div class="loginInputSection">
+        <div class="loginInputSection">
+            <div class="loginLableInput">
                 <label>Введите текущий пароль:</label>
                 <input type="password" name="currentPassword" class="loginInput">
             </div>
-            <div class="errorMessage">
+            <div class="loginErrorMessage">
                 @error('currentPassword')
                     <strong>{{ $message }}</strong>
                 @enderror
@@ -34,12 +34,12 @@
         </div>  
 
         <!-- enter new password -->
-        <div class="editPasswordValueSection">
-            <div class="loginInputSection">
+        <div class="loginInputSection">
+            <div class="loginLableInput">
                 <label>Введите новый пароль:</label>
                 <input type="password" name="newPassword" class="loginInput">
             </div>
-            <div class="errorMessage">
+            <div class="loginErrorMessage">
                 @error('newPassword')
                     <span><strong>{{ $message }}</strong></span>
                 @enderror
@@ -47,12 +47,12 @@
         </div>
 
         <!-- enter new password again -->
-        <div class="editPasswordValueSection">
-            <div>
+        <div class="loginInputSection">
+            <div class="loginLableInput">
                 <label>Введите новый пароль еще раз:</label>
                 <input type="password" name="сonfirmNewPassword" class="loginInput">
             </div>
-            <div class="errorMessage">
+            <div class="loginErrorMessage">
                 @error('сonfirmNewPassword')
                     <span><strong>{{ $message }}</strong></span>
                 @enderror
