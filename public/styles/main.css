@@ -350,3 +350,15 @@ td > a, td > form > input {
 	margin-bottom: 20px;
 	height: 29px;
 }
+/*editPassword*/
+.editPasswordValueSection{
+	display: flex;
+	flex-direction: column;
+}
+.editPasswordSaveCancel{
+	display: flex;
+	justify-content: right;
+	gap: 4px;
+	margin-right: 29%;
+	margin-bottom: 20px;
+}
