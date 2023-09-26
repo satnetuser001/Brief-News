@@ -500,3 +500,6 @@ Russifying the application with https://github.com/Laravel-Lang/lang/tree/main:
 Changed the locale setting in the file config/app.php to 'locale' => 'ru'.
 Changed some russian error messages.
 Fixed style bug on a pages: "login", "register" and "edit user password".
+
+26.09.23
+Added styles for the pages "Edit User Profile".

@@ -353,11 +353,52 @@ td > a, td > form > input {
 	margin-bottom: 20px;
 	height: 29px;
 }
-/*editPassword*/
+
+/*editPassword Page*/
 .editPasswordSaveCancel{
 	display: flex;
 	justify-content: right;
 	gap: 4px;
 	margin-right: 28%;
 	margin-bottom: 20px;
+}
+
+/*editUserProfile Page*/
+.editUserProfile{
+	display: grid;
+	grid-template-rows: 30px max-content max-content;
+	gap: 10px;
+}
+#editUserProfileForm{
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	gap: 10px;
+	font-size: 20px;
+}
+.userDataRow{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 10px;
+	background: Silver;
+}
+.userDataColumnSection{
+	display: flex;
+	flex-direction: column;
+}
+.userDataColumn{
+	display: grid;
+	grid-template-columns: 1fr 1fr 50%;
+}
+.userDataErrorMessage{
+	display: flex;
+	color: FireBrick;
+	margin-left: 25%;
+}
+.editUserProfileSelect{
+	height: 27px;
+	width: 100px;
+	font: inherit;
+	font-size: 19px;
 }
