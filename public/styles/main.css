@@ -369,7 +369,7 @@ td > a, td > form > input {
 	grid-template-rows: 30px max-content max-content;
 	gap: 10px;
 }
-#editUserProfileForm, #createUserProfileForm{
+#editUserProfileForm, #createUserProfileForm, #editMyProfileForm{
 	display: flex;
 	flex-direction: column;
 	align-self: center;
@@ -403,13 +403,16 @@ td > a, td > form > input {
 	font-size: 19px;
 }
 
-/*Create User Profile*/
-/*
-#createUserProfileForm{
-	display: flex;
-	flex-direction: column;
-	align-self: center;
-	gap: 10px;
-	font-size: 20px;
+/*Edit My Profile*/
+.editPasswordButton{
+	display: grid;
+	width: 160px;
+	height: 25px;
+	text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 7px;
+    justify-content: center;
+    align-content: center;
 }
-*/
