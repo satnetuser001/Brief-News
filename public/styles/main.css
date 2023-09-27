@@ -369,7 +369,7 @@ td > a, td > form > input {
 	grid-template-rows: 30px max-content max-content;
 	gap: 10px;
 }
-#editUserProfileForm{
+#editUserProfileForm, #createUserProfileForm{
 	display: flex;
 	flex-direction: column;
 	align-self: center;
@@ -402,3 +402,14 @@ td > a, td > form > input {
 	font: inherit;
 	font-size: 19px;
 }
+
+/*Create User Profile*/
+/*
+#createUserProfileForm{
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	gap: 10px;
+	font-size: 20px;
+}
+*/

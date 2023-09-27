@@ -22,18 +22,6 @@
 
         <div class="userDataRow">
 
-            {{--
-            <div class="userDataColumnSection">
-                <div class="userDataColumn">
-                    <label>Some</label>
-                    <input type="" name=""> or <div>data</div>
-                </div>
-                <div class="loginErrorMessage">
-                    error
-                </div>
-            </div>
-            --}}
-
             <!-- ID -->
             <div class="userDataColumnSection">
                 <div class="userDataColumn">
