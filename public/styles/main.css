@@ -416,3 +416,13 @@ td > a, td > form > input {
     justify-content: center;
     align-content: center;
 }
+
+/*Destroy User Profile Confirm*/
+.userBeingDeletedInformation{
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	padding: 10px;
+	background: Silver;
+	gap: 5px;
+}

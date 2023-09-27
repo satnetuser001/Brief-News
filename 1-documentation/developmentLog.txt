@@ -507,3 +507,4 @@ Added styles for the pages "Edit User Profile".
 27.09.23
 Added styles for the pages "Create User Profile".
 Added styles for the pages "Edit My Profile".
+Added styles for the pages "Destroy User Profile Confirm".
