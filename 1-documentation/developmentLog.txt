@@ -508,3 +508,8 @@ Added styles for the pages "Edit User Profile".
 Added styles for the pages "Create User Profile".
 Added styles for the pages "Edit My Profile".
 Added styles for the pages "Destroy User Profile Confirm".
+
+THE FRONTEND IS OVER!!!
+
+05.10.23
+Final edits were made to the technical task.
