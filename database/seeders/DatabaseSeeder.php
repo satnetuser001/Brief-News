@@ -21,20 +21,36 @@ class DatabaseSeeder extends Seeder
 
         /*calling seed classes*/
         $this->call([
+
             //filling the table 'rubrics_cambinations' with all possible combinations
             RubricsCombinationSeeder::class,
 
             //creates a root user
             UserRootSeeder::class,
 
-            //creates an admin user
+            //creates a test admin user
             UserAdminSeeder::class,
 
-            //create test authors, articles, and links
+            //create a test deleted authors, articles, and links
+            DeletedUserArticleLinkSeeder::class,
+
+            //create a test authors, deleted articles, and links
+            UserDeletedArticleLinkSeeder::class,
+
+            //create a test deleted authors, deleted articles, and links
+            DeletedUserDeletedArticleLinksSeeder::class,
+
+            //create a test banned author
+            BannedWriterSeeder::class,
+
+            //create a test authors, articles and links
             UserArticleLinkSeeder::class,
 
-            //creates a reader user
+            //create a test reader user
             UserReaderSeeder::class,
+
+            //create an instruction article for a web application
+            InstructionArticleSeeder::class,
         ]);
     }
 }

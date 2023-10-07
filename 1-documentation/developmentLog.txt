@@ -513,3 +513,16 @@ THE FRONTEND IS OVER!!!
 
 05.10.23
 Final edits were made to the technical task.
+
+06.10.23
+Several seeders have been created that add test data to the database:
+	deleted writers and their not deleted articles;
+	not deleted writers and their deleted articles;
+	deleted writers and their deleted articles.
+
+07.10.23
+Two seeders have been created that add test data to the database:
+	banned writer;
+	instructions for using the web application.
+Regenerate database.
+A database dump has been made.

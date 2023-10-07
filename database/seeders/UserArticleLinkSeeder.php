@@ -49,7 +49,7 @@ class UserArticleLinkSeeder extends Seeder
                 }
 
                 $objArticle = $objWriter->articles()->create([
-                    'header' => "This is test header, $objWriter->name, article N $j",
+                    'header' => "This is test header, author $objWriter->name, article N $j",
                     'body' => $body,
                     'rubrics_combination_id' => rand(1, 256),
                 ]);
