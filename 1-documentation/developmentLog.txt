@@ -526,3 +526,8 @@ Two seeders have been created that add test data to the database:
 	instructions for using the web application.
 Regenerate database.
 A database dump has been made.
+
+08.10.23
+The font in articles has been increased.
+Regenerate database.
+A database dump has been made.

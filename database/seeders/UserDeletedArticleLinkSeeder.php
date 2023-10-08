@@ -20,7 +20,7 @@ class UserDeletedArticleLinkSeeder extends Seeder
         $articleCount = 5;
         $delay = 1; //time between article creation (int.sec.)
         $wordsCount = 500; //in the article
-        $wordsInLine = 15;
+        $wordsInLine = 13;
         $linksCount = 5;
 
         /*writer*/

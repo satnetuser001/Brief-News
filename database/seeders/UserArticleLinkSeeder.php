@@ -20,7 +20,7 @@ class UserArticleLinkSeeder extends Seeder
         $articleCount = 5;
         $delay = 1; //time between article creation (int.sec.)
         $wordsCount = 500; //in the article
-        $wordsInLine = 15;
+        $wordsInLine = 13;
         $linksCount = 5;
 
         /*writer*/
@@ -57,7 +57,7 @@ class UserArticleLinkSeeder extends Seeder
                 /*link*/
                 for ($k=1; $k <= $linksCount; $k++) {                    
                     $objArticle->links()->create([
-                        'link' => 'https://This_is_link_N_' . $k . '.com.ua',
+                        'link' => 'https://this_is_link_N_' . $k . '.com.ua',
                     ]);
                 }
 
