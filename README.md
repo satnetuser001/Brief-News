@@ -1,7 +1,7 @@
 Brief News is a web application of news in a concise and impartial presentation with links to sources on Laravel 10.13.0.
 
 Deployed web application:
-http://briefnews.dp.ua/
+http://briefnews.mooo.com
 
 Articles can be sorted by category and locale using the custom sort panel.
 
